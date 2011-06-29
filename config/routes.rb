@@ -1,4 +1,6 @@
 Vidli::Application.routes.draw do
+  get "user_sessions/new"
+
   resources :s3_uploads
 
   root :to => "home#index"
@@ -19,6 +21,11 @@ Vidli::Application.routes.draw do
   match 'cart/add/download/:id', :to => 'cart#add', :delivery => 'download', :as => 'add_download_cart'
   match 'cart/add/streaming/:id', :to => 'cart#add', :delivery => 'streaming', :as => 'add_streaming_cart'
   match 'cart/remove/:id', :to => 'cart#remove', :as => 'remove_cart_item'
+
+  resources :user_sessions
+
+  match 'login' => "user_sessions#new",      :as => :login
+  match 'logout' => "user_sessions#destroy", :as => :logout
 
   match ':controller(/:action(/:id))'
 

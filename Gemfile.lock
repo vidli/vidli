@@ -35,6 +35,9 @@ GEM
       activesupport (= 3.0.9)
     activesupport (3.0.9)
     arel (2.0.10)
+    authlogic (3.0.3)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     aws-s3 (0.6.2)
       builder
       mime-types
@@ -87,6 +90,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
   aws-s3 (= 0.6.2)
   money (= 3.7.1)
   mysql2 (= 0.2.6)

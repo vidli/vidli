@@ -6,6 +6,8 @@ gem 's3_swf_upload', "0.3.2", :git => 'git://github.com/nathancolgate/s3-swf-upl
 gem 'aws-s3', "0.6.2", :require => 'aws/s3'
 gem "paperclip", "~> 2.3"
 gem "money", "3.7.1"
+gem "authlogic"
+
 
 # Deploy with Capistrano
 # gem 'capistrano'
