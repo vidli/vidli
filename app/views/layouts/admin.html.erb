@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vidli - Administration</title>
+  <%= stylesheet_link_tag :all %>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1<%= Rails.env == 'development' ? '.min' : '' %>.js"></script>
+	<%= javascript_include_tag 'jwplayer' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<p><%= link_to 'Home', root_path %></p>
+
+<%= yield %>
+
+</body>
+</html>

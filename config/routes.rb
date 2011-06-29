@@ -1,4 +1,30 @@
 Vidli::Application.routes.draw do
+  resources :s3_uploads
+
+  root :to => "home#index"
+  
+  namespace :admin do
+    # (app/controllers/admin/products_controller.rb)
+    root :to => "videos#index"
+    resources :videos do
+      member do
+        post 'update_s3_path'
+        get 'delete_s3_asset'
+      end
+    end
+  end
+
+  match 'cart', :to => 'cart#index', :as => 'cart'
+  match 'videos/show/:id', :to => 'videos#show', :as => 'show_video'
+  match 'cart/add/download/:id', :to => 'cart#add', :delivery => 'download', :as => 'add_download_cart'
+  match 'cart/add/streaming/:id', :to => 'cart#add', :delivery => 'streaming', :as => 'add_streaming_cart'
+  match 'cart/remove/:id', :to => 'cart#remove', :as => 'remove_cart_item'
+
+  match ':controller(/:action(/:id))'
+
+#  match ':controller(/:action(/:id))', :controller => /admin\/[^\/]+/
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

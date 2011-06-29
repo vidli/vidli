@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @video.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @video.description %>
+</p>
+
+<%= image_tag @video.screenshot.url(:thumb) %>
+
+<% if !@video.s3_path %>
+<p>
+  <b><%= link_to 'Add Video File', edit_admin_video_path(@video) %></b>
+</p>
+<% else %>
+<p>
+  <b>Download:</p>
+  <%= link_to @video.s3_url, @video.s3_url %>
+</p>
+
+<p>
+  <div id="mediaplayer"></div>
+
+	<script type="text/javascript">
+		jwplayer("mediaplayer").setup({
+			flashplayer: "/flash/player.swf",
+			file: "<%= @video.s3_url %>"
+//  			,image: "preview.jpg"
+		});
+	</script>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_admin_video_path(@video) %> |
+<%= link_to 'Back', admin_videos_path %>

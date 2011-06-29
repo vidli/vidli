@@ -1,0 +1,5 @@
+<h2><%= @video.title %></h2>
+<%= image_tag @video.screenshot.url(:medium) %>
+<p><%= @video.description %></p>
+<%= link_to 'Add Download to Cart', add_download_cart_path(@video) if @video.downloadable? %>
+<%= link_to 'Add Streaming to Cart', add_streaming_cart_path(@video) if @video.streamable? %>

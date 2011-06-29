@@ -1,0 +1,51 @@
+<%= form_for([:admin, @video], :html => { :multipart => true }) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :screenshot %>
+    <%= f.file_field :screenshot %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price_download, 'Price for Download' %>
+    <%= f.text_field :price_download %>
+  </div>
+
+  <div class="field">
+    <%= f.label :downloadable, 'Sell via Download' %>
+    <%= f.check_box :downloadable %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price_streaming, 'Price for Streaming' %>
+    <%= f.text_field :price_streaming %>
+  </div>
+
+  <div class="field">
+    <%= f.label :streamable, 'Sell via Stream' %>
+    <%= f.check_box :streamable %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

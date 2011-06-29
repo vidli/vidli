@@ -1,0 +1,6 @@
+<h1>Vidli</h1>
+<ul>
+  <% @videos.each do |v| %>
+  <li><%= link_to v.title, show_video_path(v) %></li>
+  <% end -%>
+</ul>
