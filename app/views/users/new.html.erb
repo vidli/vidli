@@ -1,28 +1,31 @@
-<h2>Login</h2>
-
-<% form_for @user_session, :url => {:action => "create"} do |f| -%>
-  <% if @user_session.errors.any? -%>
+<h2>Register</h2>
+<% form_for @user, :url => {:action => "create"} do |f| -%>
+  <% if @user.errors.any? -%>
     <div id="error_explanation">
       <ul>
-      <% @user_session.errors.full_messages.each do |msg| -%>
+      <% @user.errors.full_messages.each do |msg| -%>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+  
   <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
+  
   <div class="field">
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
+
   <div class="field">
-    <%= f.check_box :remember_me %>
-    <%= f.label :remember_me %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>
+
   <div class="field">
-    <%= f.submit "Login" %>
+    <%= f.submit "Register" %>
   </div>
-<% end -%>  
+<% end -%>

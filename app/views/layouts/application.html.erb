@@ -8,8 +8,20 @@
 </head>
 <body>
 
-<p><%= link_to 'Home', root_path %> | <%= link_to 'Cart', cart_path %> | <%= link_to 'Admin', admin_videos_path %></p>
+<p>
+  <%= link_to 'Home', root_path %> | <%= link_to 'Cart', cart_path %> | <%= link_to 'Admin', admin_videos_path %>
+  <% if current_user -%>
+  | Signed in as <%= current_user.email %> | <%= link_to 'Logout', logout_path %>
+  <% else -%>
+  | <%= link_to 'Login', login_path %>
+  | <%= link_to 'Register', register_path %>
+  <% end %>
+</p>
 
+<div class="messages">
+  <% if flash[:error]%><p class="error"><%= flash[:error] %></p><% end -%>
+  <% if flash[:notice]%><p class="notice"><%= flash[:notice] %></p><% end -%>
+</div>
 <%= yield %>
 
 </body>
