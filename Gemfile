@@ -7,7 +7,7 @@ gem 'aws-s3', "0.6.2", :require => 'aws/s3'
 gem "paperclip", "~> 2.3"
 gem "money", "3.7.1"
 gem "authlogic"
-
+gem "declarative_authorization"
 
 # Deploy with Capistrano
 # gem 'capistrano'

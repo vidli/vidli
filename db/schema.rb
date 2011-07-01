@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629181923) do
+ActiveRecord::Schema.define(:version => 20110701220329) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cart_items", :force => true do |t|
     t.integer "cart_id"
@@ -22,8 +29,13 @@ ActiveRecord::Schema.define(:version => 20110629181923) do
     t.string "session_id"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "login",                             :null => false
     t.string   "email",                             :null => false
     t.string   "crypted_password",                  :null => false
     t.string   "password_salt",                     :null => false
@@ -40,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20110629181923) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
 
   create_table "videos", :force => true do |t|

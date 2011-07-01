@@ -25,10 +25,17 @@ Vidli::Application.routes.draw do
   match 'cart/remove/:id', :to => 'cart#remove', :as => 'remove_cart_item'
 
   resources :user_sessions
+  
+  resources :users do
+    member do
+      post "update_roles"
+    end
+  end
 
   match 'login' => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   match 'register' => "users#new", :as => :register
+  match 'account' => "users#show", :as => :account
 
   match ':controller(/:action(/:id))'
 

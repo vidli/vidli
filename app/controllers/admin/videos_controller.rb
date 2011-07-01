@@ -1,4 +1,6 @@
 class Admin::VideosController < Admin::AdminController
+  filter_access_to :all, :context => :admin_videos
+
   def index
     @videos = Video.all
 

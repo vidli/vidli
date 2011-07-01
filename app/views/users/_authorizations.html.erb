@@ -1,0 +1,12 @@
+<div class="roles">
+  <h3>Roles</h3>
+	<% form_tag update_roles_user_path(@user.id) do |a| -%>
+    <% Role.all.each do |r| -%>
+    <div class="field">
+      <%= check_box :roles, r.id, :checked => @user.roles.find_by_id(r.id) ? true : false %> 
+      <label for="roles_<%= r.id %>"><%= r.title %></label>
+    </div>
+  	<% end -%> 
+    <%= submit_tag 'Update Role' %>
+	<% end -%> 
+</div>

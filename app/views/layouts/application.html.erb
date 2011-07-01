@@ -9,9 +9,9 @@
 <body>
 
 <p>
-  <%= link_to 'Home', root_path %> | <%= link_to 'Cart', cart_path %> | <%= link_to 'Admin', admin_videos_path %>
+  <%= link_to 'Home', root_path %> | <%= link_to 'Cart', cart_path %><% if permitted_to? :index, :admin_videos %> | <%= link_to 'Admin', admin_videos_path %><% end %>
   <% if current_user -%>
-  | Signed in as <%= current_user.email %> | <%= link_to 'Logout', logout_path %>
+  | Signed in as <%= link_to current_user.email, account_url %> | <%= link_to 'Logout', logout_path %>
   <% else -%>
   | <%= link_to 'Login', login_path %>
   | <%= link_to 'Register', register_path %>
