@@ -1,8 +1,15 @@
+require 'format'
+
 class User < ActiveRecord::Base
   acts_as_authentic
   
   has_many :assignments
   has_many :roles, :through => :assignments
+
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_format_of     :email, :with => Format::EMAIL, :message => "is not valid"
+  validates_uniqueness_of :email, :case_sensitive => false, :message => "has already been used"
 
   def role_symbols
     roles.map do |role|

@@ -42,6 +42,6 @@ module AuthorizeFu
   
 # decl_auth
   def set_admin_auth
-    @admin = current_user.authorized?(:admin)
+    @admin = current_user && current_user.authorized?(:admin) ? true : false
   end
 end
