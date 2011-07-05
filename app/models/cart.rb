@@ -54,4 +54,14 @@ class Cart < ActiveRecord::Base
   def empty?
     self.cart_items.blank?
   end
+  
+  def total_price
+    total = 0.to_money
+    
+    cart_items.each do |ci|
+      total += ci.price
+    end
+
+    return total
+  end
 end

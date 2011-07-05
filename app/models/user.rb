@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   
   has_many :assignments
   has_many :roles, :through => :assignments
+  has_one :cart
 
   validates_presence_of :first_name
   validates_presence_of :last_name

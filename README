@@ -12,3 +12,8 @@
 
 4. Upload the lib/crossdomain.xml file to each bucket. Make sure permissions have Everyone -> Open/Download.
 
+5. Signup at PayPal for a developer account
+    http://developer.paypal.com
+
+5. Configure ActiveMerchant for payments
+    cp config/active_merchant.yml.example config/active_merchant.yml

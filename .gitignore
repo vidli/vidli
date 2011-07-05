@@ -4,4 +4,5 @@ log/*.log
 tmp/
 config/database.yml
 config/amazon_s3.yml
+config/vidli_config.yml
 public/system/*

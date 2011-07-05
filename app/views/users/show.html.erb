@@ -1,2 +1,2 @@
 <h2>User Profile</h2>
-<%= render :partial => 'authorizations' %>
+<%= render :partial => 'authorizations' if permitted_to? :index, :admin_videos %>

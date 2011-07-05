@@ -22,5 +22,15 @@ Vidli::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      :login => VidliConfig.paypal.login,
+      :password => VidliConfig.paypal.password,
+      :signature => VidliConfig.paypal.signature
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
 end
 

@@ -46,4 +46,15 @@ Vidli::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :production
+    paypal_options = {
+      :login => VidliConfig.paypal.login,
+      :password => VidliConfig.paypal.password,
+      :signature => VidliConfig.paypal.signature
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
+  
 end

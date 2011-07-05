@@ -8,6 +8,7 @@ gem "paperclip", "~> 2.3"
 gem "money", "3.7.1"
 gem "authlogic"
 gem "declarative_authorization"
+gem "activemerchant"
 
 # Deploy with Capistrano
 # gem 'capistrano'

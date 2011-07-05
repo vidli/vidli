@@ -1,0 +1,47 @@
+ConfigurationManager
+====================
+
+Allows you to easily manage your app's configuration by using a YAML file to
+store the configuration while accessing it from a class-like interface.
+
+Inspiration taken from Peepcode's Rails Code Review:
+http://peepcode.com/products/draft-rails-code-review-pdf
+
+Install the plugin:
+  script/plugin install http://wonsys.googlecode.com/svn/plugins/configuration_manager/
+
+Bug tracker: http://wonsysos.16bugs.com/
+
+Example
+=======
+
+File: config/configuration_manager.yml
+
+everyone: &every_env
+  key1: value1
+  inner_hash:
+    key2: value2
+    
+development: &non_production_env
+  <<: *every_env
+  key3: value3
+  
+test:
+  <<: *non_production_env
+
+production:
+  <<: *every_env
+  key4: value4
+
+config/environment.rb
+
+[SNIP]
+MyConfig = ConfigurationManager.new_manager
+
+Then use it like this:
+
+MyConfig.key1 #=> value1
+MyConfig.inner_hash.key2 #=> value2
+
+
+Copyright (c) 2008 Wonsys S.r.l., released under the MIT license

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110702182308) do
+ActiveRecord::Schema.define(:version => 20110705213950) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "role_id"
@@ -28,6 +28,47 @@ ActiveRecord::Schema.define(:version => 20110702182308) do
   create_table "carts", :force => true do |t|
     t.string  "session_id"
     t.integer "user_id"
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "video_id"
+    t.integer  "price_in_cents"
+    t.string   "delivery"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "total_in_cents"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "purchased_at"
+    t.string   "express_payer_id"
+    t.string   "express_token"
+    t.integer  "user_id"
+    t.string   "ip"
+    t.string   "address_one"
+    t.string   "address_two"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip_postal_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "total_in_cents"
   end
 
   create_table "roles", :force => true do |t|

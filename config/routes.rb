@@ -1,5 +1,5 @@
 Vidli::Application.routes.draw do
-  get "users/register"
+  get "checkout/express"
 
   get "user_sessions/new"
 
@@ -17,17 +17,26 @@ Vidli::Application.routes.draw do
       end
     end
   end
-
+  
+  ## CART
   match 'cart', :to => 'cart#index', :as => 'cart'
   match 'videos/show/:id', :to => 'videos#show', :as => 'show_video'
   match 'cart/add/download/:id', :to => 'cart#add', :delivery => 'download', :as => 'add_download_cart'
   match 'cart/add/streaming/:id', :to => 'cart#add', :delivery => 'streaming', :as => 'add_streaming_cart'
   match 'cart/remove/:id', :to => 'cart#remove', :as => 'remove_cart_item'
 
+  ## CHECKOUT
+  match 'checkout/express', :to => 'checkout#express', :as => 'express_checkout'
+  match 'checkout/confirm', :to => 'checkout#confirm', :as => 'confirm_checkout'
+  match 'checkout/place_order', :to => 'checkout#place_order', :as => 'place_order_checkout'
+
   resources :user_sessions
+  
+  resources :orders
   
   resources :users do
     member do
+      get "register"
       post "update_roles"
     end
   end
