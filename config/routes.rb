@@ -35,6 +35,7 @@ Vidli::Application.routes.draw do
   ## ORDERS
   resources :orders
   match 'orders/download/:id/:order_item_id', :to => 'orders#download', :as => 'download_order_item'
+  match 'orders/streaming/:id/:order_item_id', :to => 'orders#streaming', :as => 'streaming_order_item'
   match 'orders/watch/:id/:order_item_id', :to => 'orders#watch', :as => 'watch_order_item'
   
   ## USERS

@@ -28,8 +28,8 @@
 	<script type="text/javascript">
 		jwplayer("mediaplayer").setup({
 			flashplayer: "/flash/player.swf",
-			file: "<%= @video.s3_url %>"
-//  			,image: "preview.jpg"
+			file: "<%= @video.s3_url %>",
+			image: "<%= @video.screenshot.url(:medium) %>"
 		});
 	</script>
 </p>

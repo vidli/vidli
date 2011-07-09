@@ -1,1 +1,15 @@
 <h2>Watch Video</h2>
+<p>
+  <div id="mediaplayer"></div>
+
+	<%= javascript_include_tag 'jwplayer' %>
+	<script type="text/javascript">
+		jwplayer("mediaplayer").setup({
+			flashplayer: "/flash/player.swf",
+			file: "<%= streaming_order_item_path(@order.uuid, params[:order_item_id]) %>.mov",
+			image: "<%= @video.screenshot.url(:medium) %>"
+		});
+	</script>
+</p>
+
+<p class="description"><%= @video.description %></p>
