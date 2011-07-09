@@ -1,4 +1,6 @@
 class CheckoutController < ApplicationController
+  before_filter :require_user
+  
   def express
     response = EXPRESS_GATEWAY.setup_purchase(@cart.total_price,
       :ip                => request.remote_ip,
@@ -10,6 +12,10 @@ class CheckoutController < ApplicationController
 
   def confirm
     @order = Order.new(:express_token => params[:token])
+    if !current_user.cart || current_user.cart.empty?
+      flash[:error] = 'Your cart is empty'
+      redirect_to root_url
+    end
   end
   
   def place_order
@@ -23,7 +29,7 @@ class CheckoutController < ApplicationController
         flash[:notice] = "Your Order Has Been Submitted"
 #       @order.notify_video_buyer
 #       @order.notify_video_seller
-        redirect_to order_url(@order) and return
+        redirect_to order_url(@order.uuid) and return
       else
         @order.destroy
         flash[:error] = "Sorry - your purchase failed. Please check your info and try again."

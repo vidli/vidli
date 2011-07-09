@@ -1,5 +1,6 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :order
+  belongs_to :video
   
   composed_of :price,
     :class_name => "Money",

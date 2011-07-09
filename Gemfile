@@ -9,6 +9,7 @@ gem "money", "3.7.1"
 gem "authlogic"
 gem "declarative_authorization"
 gem "activemerchant"
+gem "uuidtools", "= 2.1.1"
 
 # Deploy with Capistrano
 # gem 'capistrano'

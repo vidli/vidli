@@ -18,9 +18,11 @@ Vidli::Application.routes.draw do
     end
   end
   
+  ## VIDEOS
+  match 'videos/show/:id', :to => 'videos#show', :as => 'show_video'
+
   ## CART
   match 'cart', :to => 'cart#index', :as => 'cart'
-  match 'videos/show/:id', :to => 'videos#show', :as => 'show_video'
   match 'cart/add/download/:id', :to => 'cart#add', :delivery => 'download', :as => 'add_download_cart'
   match 'cart/add/streaming/:id', :to => 'cart#add', :delivery => 'streaming', :as => 'add_streaming_cart'
   match 'cart/remove/:id', :to => 'cart#remove', :as => 'remove_cart_item'
@@ -30,21 +32,26 @@ Vidli::Application.routes.draw do
   match 'checkout/confirm', :to => 'checkout#confirm', :as => 'confirm_checkout'
   match 'checkout/place_order', :to => 'checkout#place_order', :as => 'place_order_checkout'
 
-  resources :user_sessions
-  
+  ## ORDERS
   resources :orders
+  match 'orders/download/:id/:order_item_id', :to => 'orders#download', :as => 'download_order_item'
+  match 'orders/watch/:id/:order_item_id', :to => 'orders#watch', :as => 'watch_order_item'
   
+  ## USERS
   resources :users do
     member do
       get "register"
       post "update_roles"
     end
   end
+  match 'register' => "users#new", :as => :register
+  match 'account' => "users#show", :as => :account
+  
+  ## USER SESSIONS
+  resources :user_sessions
 
   match 'login' => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
-  match 'register' => "users#new", :as => :register
-  match 'account' => "users#show", :as => :account
 
   match ':controller(/:action(/:id))'
 

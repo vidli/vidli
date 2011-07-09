@@ -1,0 +1,13 @@
+<h3>Orders</h3>
+<table>
+  <tr>
+    <th>Order Date</th>
+    <th>Total</th>
+  </tr>
+<% current_user.orders.each do |o| -%>
+  <tr>
+    <td><%= link_to o.created_at, order_path(o.uuid) %></td>
+    <td><%= number_to_currency o.total %></td>
+  </tr>
+<% end -%>
+</table>
