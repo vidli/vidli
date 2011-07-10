@@ -1,0 +1,16 @@
+<h1>Listing Orders</h1>
+
+<table>
+  <tr>
+    <th>Created On</th>
+    <th>User</th>
+    <th>Total</th>
+  </tr>
+<% @orders.each do |o| %>
+  <tr>
+    <td><%= link_to o.created_at, [:admin, o] %></td>
+    <td><%= o.user.full_name %></td>
+    <td><%= number_to_currency o.total %></td>
+  </tr>
+<% end %>
+</table>

@@ -16,6 +16,8 @@ Vidli::Application.routes.draw do
         get 'delete_s3_asset'
       end
     end
+    
+    resources :orders
   end
   
   ## VIDEOS

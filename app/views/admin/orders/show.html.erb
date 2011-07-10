@@ -1,10 +1,8 @@
-<h1>Order Receipt</h1>
+<h2>Order ID: <%= @order.uuid.upcase %></h2>
 <%= render :partial => 'orders/address', :locals => { :order => @order } %>
-<ul>
+
 <% @order.order_items.each do |i| -%>
   <li><%= i.video.title %> - via <%= i.delivery %> - <%= number_to_currency i.price %></li>
-  <% if i.delivery == 'download' %><%= link_to 'Download Video', download_order_item_path(@order.uuid, i.id) %><% end -%>
-  <% if i.delivery == 'streaming' %><%= link_to 'Watch Your Video', watch_order_item_path(@order.uuid, i.id) %><% end -%>
 <% end -%>
 </ul>
 <p>Total: <%= number_to_currency @order.total %></p>

@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
   def authorized?(role)
     role_symbols.include?(role.to_sym)
   end
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

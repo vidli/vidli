@@ -55,6 +55,16 @@ class Order < ActiveRecord::Base
     order_items.each { |oi| self.total += oi.price }
   end
   
+  def address_format(newline)
+    formatted = ''
+    formatted += user.full_name + newline
+    formatted += address_one + newline
+    formatted += address_two + newline unless !address_two || address_two.empty?
+    formatted += city + ', ' + state + ' ' + zip_postal_code + newline
+    formatted += country + newline
+    
+  end
+
   private
 
   def process_purchase

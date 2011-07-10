@@ -1,5 +1,6 @@
 <h2>Confirm</h2>
-<p>Name: <%= @order.first_name %> <%= @order.last_name %></p>
+<%= render :partial => 'orders/address', :locals => { :order => @order } %>
+
 <% @cart.cart_items.each do |i| -%>
 <li><%= i.video.title %> - via <%= i.delivery %> - <%= number_to_currency cart_item_price(i, i.delivery) %></li>
 <% end -%>
