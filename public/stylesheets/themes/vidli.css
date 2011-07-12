@@ -1,0 +1,166 @@
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: helvetica, arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Digg Pagination */
+
+.digg_pagination {
+  background: white;
+  /* self-clearing method: */ 
+}
+  
+.digg_pagination a, .digg_pagination em, .digg_pagination span {
+  padding: .2em .5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+  font-size: 0.8em;
+}
+
+.digg_pagination span.disabled {
+  color: #999;
+  border: 1px solid #DDD;
+}
+
+.digg_pagination em {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+.digg_pagination em.current {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+.digg_pagination a {
+  text-decoration: none;
+  color: #105CB6;
+  border: 1px solid #9AAFE5;
+}
+
+.digg_pagination a:hover, .digg_pagination a:focus {
+  color: #003;
+  border-color: #003;
+}
+
+.digg_pagination .page_info {
+  background: #2E6AB1;
+  color: white;
+  padding: .4em .6em;
+  width: 22em;
+  margin-bottom: .3em;
+  text-align: center;
+}
+
+.digg_pagination .page_info b {
+  color: #003;
+  background: #6aa6ed;
+  padding: .1em .25em;
+}
+
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+* html .digg_pagination {
+  height: 1%;
+}
+
+*:first-child+html .digg_pagination {
+  overflow: hidden;
+}
+
+
+.container {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.super {
+  background: #00B1E7;
+  height: 24px;
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.super a {
+  color: #fff;
+}
+
+.super .container .cart {
+  float: left;
+  padding: 3px 0 0 0;
+}
+
+.super .container .menu {
+  float: right;
+  padding: 3px 0 0 0;
+  margin: 0;
+}
+.super .container .menu li {
+  display: inline;
+}
+
+.header {
+  margin: 20px 0;
+}
+
+.header .container .logo {
+  float: left;
+}
+
+.header .container .search {
+  float: right;
+  margin: 3px 0 0 0;
+}
+
+.header .container .search .query {
+  border: 2px solid #c6c6c6;
+  border-right: none;
+  width: 420px;
+  height: 42px;
+  float: left;
+  color: #AAA;
+  font-size: 24px;
+}
+
+.header .container .search .submit {
+  border: 2px solid #c6c6c6;
+  font-size: 24px;
+  border-left: none;
+  padding: 9px 3px;
+  display: block;
+  padding: 14px 8px;
+  float: left;
+}
