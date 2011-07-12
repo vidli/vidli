@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => 3600, :use_ssl => false)
   end
   
-  def stream
+  def streaming
     @video = @order.order_items.find(params[:order_item_id]).video
     
     AWS::S3::Base.establish_connection!(

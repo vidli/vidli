@@ -7,10 +7,10 @@
 
 <p>
   <b>Description:</b>
-  <%= @video.description %>
+  <%= redcloth @video.description %>
 </p>
 
-<%= image_tag @video.screenshot.url(:thumb) %>
+<%= image_tag @video.screenshot.url(:thumb) if @video.screenshot.exists? %>
 
 <% if !@video.s3_path %>
 <p>

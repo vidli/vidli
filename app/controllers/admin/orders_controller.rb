@@ -6,7 +6,7 @@ class Admin::OrdersController < Admin::AdminController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @videos }
+      format.xml  { render :xml => @orders }
     end
   end
 
@@ -17,7 +17,7 @@ class Admin::OrdersController < Admin::AdminController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @video }
+      format.xml  { render :xml => @order }
     end
   end
 end

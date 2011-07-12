@@ -1,4 +1,5 @@
-<h2>Order ID: <%= @order.uuid.upcase %></h2>
+<h2>Order Receipt</h2>
+<h3><%= @order.uuid.upcase %></h3>
 <%= render :partial => 'orders/address', :locals => { :order => @order } %>
 
 <% @order.order_items.each do |i| -%>

@@ -16,4 +16,8 @@ class Video < ActiveRecord::Base
   def s3_url
     "http://s3.amazonaws.com/#{S3SwfUpload::S3Config.bucket}/#{s3_path}"
   end
+  
+  def self.get_search_condition(search=nil)
+    conditions = ["title like ?", "%#{search}%"] if search
+  end
 end

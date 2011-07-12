@@ -12,7 +12,7 @@ class CartController < ApplicationController
     if @cart.save!
       redirect_to :action => "index"
     else
-      flash[:error] = "Error adding license to cart!"
+      flash[:error] = "Error adding video license to cart!"
       redirect_to show_video(@video.id)
     end
   end
@@ -23,7 +23,7 @@ class CartController < ApplicationController
     if @cart_item.destroy
       redirect_to :action => "index"
     else
-      flash[:error] = "Error removing license from cart!"
+      flash[:error] = "Error removing video license from cart!"
       redirect_to :action => "index"
     end
   end

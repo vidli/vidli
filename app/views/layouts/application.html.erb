@@ -2,27 +2,225 @@
 <html>
 <head>
   <title>Vidli</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag 'themes/vidli.css' %>
+  <%= javascript_include_tag 'jquery-1.6.2' + (RAILS_ENV == 'production' ? '' : '.min') + '.js'%>
+  <%= javascript_include_tag 'themes/vidli.js' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<style>
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
 
-<p>
-  <%= link_to 'Home', root_path %> | <%= link_to 'Cart', cart_path %><% if permitted_to? :index, :admin_videos %> | <%= link_to 'Admin', admin_videos_path %><% end %>
-  <% if current_user -%>
-  | Signed in as <%= link_to current_user.email, account_url %> | <%= link_to 'Logout', logout_path %>
-  <% else -%>
-  | <%= link_to 'Login', login_path %>
-  | <%= link_to 'Register', register_path %>
-  <% end %>
-</p>
+.clearfix {display: inline-block;}
 
-<div class="messages">
-  <% if flash[:error]%><p class="error"><%= flash[:error] %></p><% end -%>
-  <% if flash[:notice]%><p class="notice"><%= flash[:notice] %></p><% end -%>
-</div>
-<%= yield %>
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: helvetica, arial, sans-serif;
+}
+
+.digg_pagination {
+  background: white;
+  /* self-clearing method: */ 
+}
+  
+.digg_pagination a, .digg_pagination em, .digg_pagination span {
+  padding: .2em .5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+
+.digg_pagination span.disabled {
+  color: #999;
+  border: 1px solid #DDD;
+}
+
+.digg_pagination em {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+.digg_pagination em.current {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+.digg_pagination a {
+  text-decoration: none;
+  color: #105CB6;
+  border: 1px solid #9AAFE5;
+}
+
+.digg_pagination a:hover, .digg_pagination a:focus {
+  color: #003;
+  border-color: #003;
+}
+
+.digg_pagination .page_info {
+  background: #2E6AB1;
+  color: white;
+  padding: .4em .6em;
+  width: 22em;
+  margin-bottom: .3em;
+  text-align: center;
+}
+
+.digg_pagination .page_info b {
+  color: #003;
+  background: #6aa6ed;
+  padding: .1em .25em;
+}
+
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+* html .digg_pagination {
+  height: 1%;
+}
+
+*:first-child+html .digg_pagination {
+  overflow: hidden;
+}
+
+
+.container {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.super {
+  background: #00B1E7;
+  height: 24px;
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.super a {
+  color: #fff;
+}
+
+.super .container .cart {
+  float: left;
+  padding: 3px 0 0 0;
+}
+
+.super .container .menu {
+  float: right;
+  padding: 3px 0 0 0;
+  margin: 0;
+}
+.super .container .menu li {
+  display: inline;
+}
+
+.header {
+  margin: 20px 0 0 0;
+}
+
+.header .container .logo {
+  float: left;
+}
+
+.header .container .search {
+  float: right;
+  margin: 3px 0 0 0;
+}
+
+.header .container .search .query {
+  border: 2px solid #c6c6c6;
+  border-right: none;
+  width: 420px;
+  height: 42px;
+  float: left;
+  color: #AAA;
+  font-size: 24px;
+}
+
+.header .container .search .submit {
+  border: 2px solid #c6c6c6;
+  font-size: 24px;
+  border-left: none;
+  padding: 9px 3px;
+  display: block;
+  padding: 14px 8px;
+  float: left;
+}
+</style>
+  <div class="super clearfix">
+    <div class="container">
+      <div class="cart">
+        <%= link_to "Shopping Cart (#{@cart.cart_items.count})", cart_path %>
+      </div>
+      <ul class="menu">
+      <% if current_user -%>
+        <li>Signed in as <%= link_to current_user.email, account_url %> <%= link_to(image_tag('themes/vidli/icons/x-dark_blue-small.png', :alt => 'Logout'), logout_path, :class => 'logout') %></li>
+      <% else -%>
+        <li><%= link_to 'Login', login_path %></li>
+        <li class="divider">|</li>
+        <li><%= link_to 'Register', register_path %>
+      <% end %>
+      <% if permitted_to? :index, :admin_videos -%>
+        <li class="divider">|</li> 
+        <li><%= link_to 'Admin', admin_videos_path %></li>
+      <% end -%>
+      </ul>
+    </div>
+  </div>
+  <div class="header clearfix">
+    <div class="container">
+      <div class="logo"><a href="/" title="Video Licensing"><%= image_tag 'themes/vidli/common/vidli-logo.png', :alt => 'Video Licensing' %></a></div>
+      <div class="search">
+      	<% form_tag(search_videos_path, :method => :get ) do %>
+      		<%= text_field_tag :q, params[:q], :class => 'query off', :id => 'header_search' %>
+      		<%= image_submit_tag 'themes/vidli/icons/search.png', :name => "", :class => 'submit' %>
+      	<% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="messages clearfix">
+    <div class="container">
+      <div class="flash">
+        <% if flash[:error]%><p class="error"><%= flash[:error] %></p><% end -%>
+        <% if flash[:notice]%><p class="notice"><%= flash[:notice] %></p><% end -%>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content clearfix">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
+
+
+  <div class="footer clearfix">
+    <div class="container">
+      <p>&copy; All Rights Reserved. Video eCommerce powered by <%= link_to 'Vidli', 'http://vidli.com' %> &reg;</p>
+    </div>
+  </div>
 
 </body>
 </html>

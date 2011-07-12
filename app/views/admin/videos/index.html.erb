@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +10,7 @@
 
 <% @videos.each do |video| %>
   <tr>
-    <td><%= video.title %></td>
-    <td><%= video.description %></td>
+    <td><%= h video.title %></td>
     <td><%= link_to 'Show', [:admin, video] %></td>
     <td><%= link_to 'Edit', edit_admin_video_path(video) %></td>
     <td><%= link_to 'Destroy', [:admin, video], :confirm => 'Are you sure?', :method => :delete %></td>

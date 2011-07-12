@@ -1,5 +1,3 @@
-require 'authorize_fu'
-
 class ApplicationController < ActionController::Base
   # include extensions for authorizaitons
   include AuthorizeFu

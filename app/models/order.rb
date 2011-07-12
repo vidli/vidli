@@ -57,7 +57,7 @@ class Order < ActiveRecord::Base
   
   def address_format(newline)
     formatted = ''
-    formatted += user.full_name + newline
+    formatted += first_name + ' ' + last_name + newline
     formatted += address_one + newline
     formatted += address_two + newline unless !address_two || address_two.empty?
     formatted += city + ', ' + state + ' ' + zip_postal_code + newline

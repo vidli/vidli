@@ -10,6 +10,9 @@ gem "authlogic"
 gem "declarative_authorization"
 gem "activemerchant"
 gem "uuidtools", "= 2.1.1"
+gem "RedCloth"
+#gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
+gem "will_paginate", "~> 3.0.pre2"
 
 # Deploy with Capistrano
 # gem 'capistrano'

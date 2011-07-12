@@ -1,27 +1,14 @@
 Vidli::Application.routes.draw do
   get "checkout/express"
 
-  get "user_sessions/new"
-
   resources :s3_uploads
 
   root :to => "home#index"
   
-  namespace :admin do
-    # (app/controllers/admin/products_controller.rb)
-    root :to => "videos#index"
-    resources :videos do
-      member do
-        post 'update_s3_path'
-        get 'delete_s3_asset'
-      end
-    end
-    
-    resources :orders
-  end
-  
   ## VIDEOS
   match 'videos/show/:id', :to => 'videos#show', :as => 'show_video'
+  match 'videos/search', :to => 'videos#search', :as => 'search_videos'
+  match 'videos/search/:q', :to => 'videos#search', :as => 'query_search_videos'
 
   ## CART
   match 'cart', :to => 'cart#index', :as => 'cart'
@@ -44,7 +31,6 @@ Vidli::Application.routes.draw do
   resources :users do
     member do
       get "register"
-      post "update_roles"
     end
   end
   match 'register' => "users#new", :as => :register
@@ -52,11 +38,32 @@ Vidli::Application.routes.draw do
   
   ## USER SESSIONS
   resources :user_sessions
+  get "user_sessions/new"
 
   match 'login' => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
 
-  match ':controller(/:action(/:id))'
+  ## ADMIN
+  namespace :admin do
+    # (app/controllers/admin/products_controller.rb)
+    root :to => "videos#index"
+    resources :videos do
+      member do
+        post 'update_s3_path'
+        get 'delete_s3_asset'
+      end
+    end
+    
+    resources :orders
+    
+    resources :users do
+      member do
+        post "update_roles"
+      end
+    end
+  end
+
+# match ':controller(/:action(/:id))'
 
 #  match ':controller(/:action(/:id))', :controller => /admin\/[^\/]+/
 
