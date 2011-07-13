@@ -1,3 +1,4 @@
+<% content_for :title, h(@video.title) %>
 <h2><%= @video.title %></h2>
 <%= image_tag @video.screenshot.url(:medium) if @video.screenshot.exists? %>
 <p><%= redcloth @video.description %></p>

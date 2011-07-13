@@ -1,31 +1,3 @@
-<style>
-.videos .video {
-  width: 190px;
-  margin: 0 6px 25px 0;
-  overflow: hidden;
-  float: left;
-}
-
-.videos .video .title {
-  margin: 4px 0 0 0;
-  color: #018eef;
-  font-size: 0.8em;
-  font-weight: bold;
-}
-
-.videos .video .thumbnail {
-  position: relative;
-  width: 188px;
-  height: 110px;
-  overflow: hidden;
-  text-align: center;
-  border: 1px solid #72D8FA;
-}
-
-.videos .row {
-  clear: both;
-}
-</style>
 <div class="videos clearfix">
   <% videos.each_with_index do |v, idx| %>
     <% if idx != 0 && idx % 5 == 0 -%>

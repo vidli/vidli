@@ -1,9 +1,27 @@
-<h2>Confirm</h2>
+<h2>Confirm Your Order</h2>
+
 <%= render :partial => 'orders/address', :locals => { :order => @order } %>
 
-<% @cart.cart_items.each do |i| -%>
-<li><%= i.video.title %> - via <%= i.delivery %> - <%= number_to_currency cart_item_price(i, i.delivery) %></li>
-<% end -%>
+<table class="cart_contents common43h">
+  <thead>
+    <tr class="titles">
+      <th class="image">Video Details</th>
+      <th class="details"></th>
+      <th class="license">License</th>
+      <th class="total">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.cart_items.each do |i| -%>
+    <tr class="row">
+      <td class="image"><%= image_tag i.video.screenshot.url(:tiny) if i.video.screenshot.exists? %></td>
+      <td class="details"><%= link_to i.video.title, show_video_path(i.video) %></td>
+      <td class="license"><%= i.delivery %></td>
+      <td class="total"><%= number_to_currency cart_item_price(i, i.delivery) %></td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
 <p>Total: <%= number_to_currency @cart.total_price %></p>
 
 <%= form_for @order, :url => place_order_checkout_path do |f| -%>

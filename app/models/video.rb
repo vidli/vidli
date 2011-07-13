@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  has_attached_file :screenshot, :styles => { :large => '640x480>', :medium => "300x300>", :thumb => "188x110>" }
+  has_attached_file :screenshot, :styles => { :large => '640x480>', :medium => "400x300>", :thumb => "188x110>", :tiny => '100x100>' }
   
   composed_of :price_download,
     :class_name => "Money",

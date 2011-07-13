@@ -23,6 +23,11 @@ body {
 h1,h2,h3,h4,h5 {
   margin: 0;
   padding: 0;
+  color: #008BCD;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 /* Digg Pagination */
@@ -101,11 +106,14 @@ h1,h2,h3,h4,h5 {
   overflow: hidden;
 }
 
+/** Layout **/
 
 .container {
   margin: 0 auto;
   width: 980px;
 }
+
+/** Super Header **/
 
 .super {
   background: #00B1E7;
@@ -128,9 +136,12 @@ h1,h2,h3,h4,h5 {
   padding: 3px 0 0 0;
   margin: 0;
 }
+
 .super .container .menu li {
   display: inline;
 }
+
+/** Header **/
 
 .header {
   margin: 20px 0;
@@ -163,4 +174,106 @@ h1,h2,h3,h4,h5 {
   display: block;
   padding: 14px 8px;
   float: left;
+}
+
+/** Footer **/
+
+.footer p {
+  padding: 20px 0 0 0;
+  color: #A2A2A2;
+  font-size: 0.8em;
+}
+
+.footer p a {
+  color: #A2A2A2;
+}
+
+/** Tables - Common 43 Height **/
+
+.common43h {
+  width: 100%;
+  border-spacing: 0;
+  margin: 20px 0 20px 0;
+}
+
+.common43h tr.titles {
+  background: url(/images/themes/vidli/common/tables/bg-column_titles-43h.gif) repeat-x top left;
+  height: 43px;
+  padding: 0;
+}
+
+.common43h .titles th {
+  font-size: 0.9em;
+  font-weight: normal;
+  text-align: left;
+  color: #4b4b4b;
+  padding: 0 0 0 10px;
+}
+
+.common43h .row {
+  background: #f9f9f9;
+}
+
+.common43h td {
+  padding: 20px 0 20px 10px;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.common43h td a {
+  color: #018EEF;
+}
+
+/** Cart **/
+
+.cart_contents .image {
+  width: 120px;
+}
+
+.cart_total {
+  font-weight: bold;
+}
+
+/** Orders - Confirm **/
+
+.orders_address { 
+  color: #32A8F1;
+}
+
+/** Order - Receipt **/
+
+.order_contents .image {
+  width: 120px;
+}
+
+.order_total {
+  font-weight: bold;
+}
+
+/** Videos - List **/
+
+.videos .video {
+  width: 190px;
+  margin: 0 6px 25px 0;
+  overflow: hidden;
+  float: left;
+}
+
+.videos .video .title {
+  margin: 4px 0 0 0;
+  color: #018eef;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.videos .video .thumbnail {
+  position: relative;
+  width: 188px;
+  height: 110px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #72D8FA;
+}
+
+.videos .row {
+  clear: both;
 }
