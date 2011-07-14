@@ -306,6 +306,80 @@ button.positive, .buttons a.positive{
   color: #018EEF;
 }
 
+/** Flash Messages **/
+
+.messages .container .flash .notice,
+.messages .container .flash .error {
+  padding: 15px 15px 15px 10px;
+  margin: 0 0 20px 0;
+}
+
+.messages .container .flash .notice {
+  color: #298f24;
+  background: #f5f5f5 url(/images/themes/vidli/messages/bg-notice.png) repeat-x bottom left;
+  border: 1px solid #439f32;
+}
+
+.messages .container .flash .error {
+  color: #e76c5d;
+  background: #f5f5f5 url(/images/themes/vidli/messages/bg-error.png) repeat-x bottom left;
+  border: 1px solid #e76757;
+}
+
+.messages .container .flash .error p,
+.messages .container .flash .notice p {
+  padding: 0 0 0 25px;
+  margin: 0;
+}
+
+.messages .container .flash .notice p {
+  background: url(/images/themes/vidli/icons/check.png) no-repeat top left;
+}
+
+.messages .container .flash .error p {
+  background: url(/images/themes/vidli/icons/error.png) no-repeat top left;
+}
+
+/** Form Fields **/
+
+.error_explanation ul li {
+  list-style-image: url('/images/themes/vidli/icons/error.png');
+  color: red;
+}
+
+.field {
+  margin: 0 0 10px 0;
+}
+
+.field_checkbox label {
+  color: #666;
+}
+
+.field_text label {
+  display: block;
+  color: #666;
+}
+
+.field_text input {
+  width: 300px;
+  font-size: 1.3em;
+  padding: 4px;
+  border: 1px solid #666;
+}
+
+.field .field_with_errors {
+  display: inline;
+}
+
+.field .field_with_errors label {
+  color: red;
+}
+
+.field .field_with_errors input {
+  color: red;
+  border: 1px solid red;
+}
+
 /** Cart **/
 
 .cart_contents .image {

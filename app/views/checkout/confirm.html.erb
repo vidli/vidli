@@ -26,6 +26,12 @@
 
 <%= form_for @order, :url => place_order_checkout_path do |f| -%>
   <%= f.hidden_field :express_token %>
-  <%= f.submit 'Place Order '%>
-  or <%= link_to 'Cancel', root_url %>
+  <div class="buttons">
+    <button type="submit" class="positive">
+      <%= image_tag('themes/vidli/icons/check.png') %>
+      Place Order
+    </button>
+    
+    <%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Cancel', root_url, :class => 'negative' %>
+  </div>
 <% end -%>

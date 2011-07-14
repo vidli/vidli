@@ -18,7 +18,7 @@
       </div>
       <ul class="menu">
       <% if current_user -%>
-        <li>Signed in as <%= link_to current_user.email, account_url %> <%= link_to(image_tag('themes/vidli/icons/x-dark_blue-small.png', :alt => 'Logout'), logout_path, :class => 'logout') %></li>
+        <li>Welcome Back <%= link_to current_user.full_name, account_url %>! <%= link_to(image_tag('themes/vidli/icons/x-dark_blue-small.png', :alt => 'Logout'), logout_path, :class => 'logout') %></li>
       <% else -%>
         <li><%= link_to 'Login', login_path %></li>
         <li class="divider">|</li>
@@ -46,8 +46,8 @@
   <div class="messages clearfix">
     <div class="container">
       <div class="flash">
-        <% if flash[:error]%><p class="error"><%= flash[:error] %></p><% end -%>
-        <% if flash[:notice]%><p class="notice"><%= flash[:notice] %></p><% end -%>
+        <% if flash[:error]%><div class="error"><p><%= flash[:error] %></p></div><% end -%>
+        <% if flash[:notice]%><div class="notice"><p><%= flash[:notice] %></p></div><% end -%>
       </div>
     </div>
   </div>
