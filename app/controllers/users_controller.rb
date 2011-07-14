@@ -14,7 +14,11 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:notice] = "Registration successful!"
-      redirect_back_or_default account_url
+      
+      # deliver notification
+      UserMailer.deliver_signup_notification(@user)
+      
+      redirect_back_or_default account_path
     else
       render :action => 'new'
     end

@@ -1,7 +1,7 @@
 <h2>Register</h2>
 <% form_for @user, :url => {:action => "create"} do |f| -%>
   <% if @user.errors.any? -%>
-    <div id="error_explanation">
+    <div class="error_explanation">
       <ul>
       <% @user.errors.full_messages.each do |msg| -%>
         <li><%= msg %></li>
@@ -11,12 +11,12 @@
   <% end %>
   
   <div class="field field_text">
-    <%= f.label :first_name %>
+    <%= f.label :first_name, 'First Name' %>
     <%= f.text_field :first_name %>
   </div>
   
   <div class="field field_text">
-    <%= f.label :last_name %>
+    <%= f.label :last_name, 'Last Name' %>
     <%= f.text_field :last_name %>
   </div>
   
@@ -36,7 +36,7 @@
   </div>
 
   <div class="field buttons">
-    <button type="submit">
+    <button type="submit" class="positive">
       <%= image_tag 'themes/vidli/icons/check.png' %>
       Register
     </button>

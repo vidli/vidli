@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   
   def layout_meta_title
-    (content_for(:title) + " - " if content_for(:title)).to_s + VidliConfig.site_name
+    (content_for(:title) + " - " if !content_for(:title).empty?).to_s + VidliConfig.site_name
   end
   
   def date_full(date)
