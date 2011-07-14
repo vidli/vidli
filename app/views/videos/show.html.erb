@@ -1,6 +1,10 @@
 <% content_for :title, h(@video.title) %>
 <h2><%= @video.title %></h2>
-<%= image_tag @video.screenshot.url(:medium) if @video.screenshot.exists? %>
-<p><%= redcloth @video.description %></p>
-<%= link_to 'Add Download to Cart', add_download_cart_path(@video) if @video.downloadable? %>
-<%= link_to 'Add Streaming to Cart', add_streaming_cart_path(@video) if @video.streamable? %>
+<div class="video_details">
+  <%= image_tag @video.screenshot.url(:medium), :class => 'video_screenshot' if @video.screenshot.exists? %>
+  <div class="video_add_to_cart_buttons buttons">
+    <% if @video.downloadable? %><%= link_to image_tag('themes/vidli/icons/cart.png') + " Add Download to Cart #{number_to_currency @video.price_download}", add_download_cart_path(@video) %><br /><% end -%>
+    <% if @video.streamable? %><%= link_to image_tag('themes/vidli/icons/cart.png') + " Add Streaming to Cart #{number_to_currency @video.price_streaming}", add_streaming_cart_path(@video) %><br /><% end -%>
+  </div>
+</div>
+<div class="video_description"><%= redcloth @video.description %></div>
