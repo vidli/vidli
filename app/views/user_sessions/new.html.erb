@@ -3,15 +3,8 @@
 
 </style>
 <% form_for @user_session, :url => {:action => "create"} do |f| -%>
-  <% if @user_session.errors.any? -%>
-    <div class="error_explanation">
-      <ul>
-      <% @user_session.errors.full_messages.each do |msg| -%>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", :target => @user_session %>
+
   <div class="field field_text">
     <%= f.label :email %>
     <%= f.text_field :email %>
@@ -23,6 +16,9 @@
   <div class="field field_checkbox">
     <%= f.check_box :remember_me %>
     <%= f.label :remember_me %>
+  </div>
+  <div class="field">
+    <%= link_to 'Forgot Your Password?', forgot_password_path %>
   </div>
   <div class="field buttons">
     <button type="submit" class="positive">

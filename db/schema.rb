@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709212943) do
+ActiveRecord::Schema.define(:version => 20110714192752) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "role_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20110709212943) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "perishable_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

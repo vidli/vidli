@@ -1,15 +1,7 @@
 <h2>Register</h2>
 <% form_for @user, :url => {:action => "create"} do |f| -%>
-  <% if @user.errors.any? -%>
-    <div class="error_explanation">
-      <ul>
-      <% @user.errors.full_messages.each do |msg| -%>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
+  <%= render "shared/error_messages", :target => @user %>
+
   <div class="field field_text">
     <%= f.label :first_name, 'First Name' %>
     <%= f.text_field :first_name %>

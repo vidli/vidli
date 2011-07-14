@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter { |c| Authorization.current_user = c.current_user }
   before_filter :set_cart # so we ALWAYS have a @cart
   before_filter :set_admin_auth
+  before_filter :mailer_set_url_options
 
 protected
 
@@ -22,7 +23,11 @@ protected
   
 private
 
-    def set_cart
-      @cart = get_cart
-    end
+  def set_cart
+    @cart = get_cart
+  end
+
+  def mailer_set_url_options
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
 end

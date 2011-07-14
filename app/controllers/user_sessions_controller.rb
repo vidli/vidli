@@ -26,4 +26,26 @@ class UserSessionsController < ApplicationController
     flash[:notice] = "Logout successful!"
     redirect_back_or_default new_user_session_url
   end
+  
+  def forgot_password
+    if current_user
+      redirect_to account_url
+    else
+      @user_session = UserSession.new()
+    end
+  end
+
+  def forgot_password_lookup_email
+    if current_user
+      redirect_to account_url
+    else
+      user = User.find_by_email(params[:user_session][:email])
+      if user
+        user.send_forgot_password!
+      else
+        flash[:error] = "Email #{params[:user_session][:email]} wasn't found. Perhaps you used a different one?"
+        redirect_to :action => 'forgot_password'
+      end
+    end
+  end
 end

@@ -35,6 +35,8 @@ Vidli::Application.routes.draw do
   end
   match 'register' => "users#new", :as => :register
   match 'account' => "users#show", :as => :account
+  put 'reset_password/:reset_password_code' => 'users#reset_password_submit', :as => :reset_password, :via => :put
+  get 'reset_password/:reset_password_code' => 'users#reset_password', :as => :reset_password, :via => :get
   
   ## USER SESSIONS
   resources :user_sessions
@@ -42,6 +44,8 @@ Vidli::Application.routes.draw do
 
   match 'login' => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
+  match 'forgot_password' => 'user_sessions#forgot_password', :as => :forgot_password, :via => :get
+  match 'forgot_password' => 'user_sessions#forgot_password_lookup_email', :as => :forgot_password, :via => :post
 
   ## ADMIN
   namespace :admin do
