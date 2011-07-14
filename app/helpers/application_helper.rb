@@ -10,4 +10,8 @@ module ApplicationHelper
   def layout_meta_title
     (content_for(:title) + " - " if content_for(:title)).to_s + VidliConfig.site_name
   end
+  
+  def date_full(date)
+    date.strftime("%B %d, %Y at %I:%M%p")
+  end
 end

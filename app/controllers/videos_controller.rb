@@ -1,6 +1,9 @@
 class VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
+    
+    @download_sold, @download_sold_order_uuid, @download_sold_order_item_id = @video.sold_to?(current_user, 'download')
+    @streaming_sold, @streaming_sold_order_uuid, @streaming_sold_order_item_id = @video.sold_to?(current_user, 'streaming')
 
     respond_to do |format|
       format.html # index.html.erb

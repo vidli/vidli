@@ -20,4 +20,22 @@ class Video < ActiveRecord::Base
   def self.get_search_condition(search=nil)
     conditions = ["title like ?", "%#{search}%"] if search
   end
+  
+  def sold_to?(user, delivery)
+    sold = nil
+    order_uuid = nil
+    order_item_id = nil
+    
+    return [sold, order_uuid, order_item_id] if !user
+    
+    order_item = user.order_items.find_by_video_id_and_delivery(self.id, delivery)
+    
+    if order_item
+      sold = true
+      order_item_id = order_item.id
+      order_uuid = order_item.order.uuid
+    end
+    
+    return [sold, order_uuid, order_item_id]
+  end
 end

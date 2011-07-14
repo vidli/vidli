@@ -1,6 +1,6 @@
 <h2>Your Shopping Cart</h2>
 <% if @cart.empty? -%>
-<h3>Your cart is empty</h3>
+<h3>No items found</h3>
 <% else -%>
 <table class="cart_contents common43h">
   <thead>
@@ -18,7 +18,7 @@
       <td class="image"><%= image_tag i.video.screenshot.url(:tiny) if i.video.screenshot.exists? %></td>
       <td class="details"><%= link_to i.video.title, show_video_path(i.video) %></td>
       <td class="license"><%= i.delivery %></td>
-      <td class="actions"><%= link_to 'Remove', remove_cart_item_path(i) %></td>
+      <td class="actions buttons"><%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Remove', remove_cart_item_path(i), :class => 'negative' %></td>
       <td class="total"><%= number_to_currency cart_item_price(i, i.delivery) %></td>
     </tr>
     <% end -%>

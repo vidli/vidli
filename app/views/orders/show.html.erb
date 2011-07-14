@@ -18,8 +18,10 @@
       <td class="details"><%= link_to i.video.title, show_video_path(i.video) %></td>
       <td class="license"><%= i.delivery %></td>
       <td class="experience">
-        <% if i.delivery == 'download' %><%= link_to 'Download Video', download_order_item_path(@order.uuid, i.id) %><% end -%>
-        <% if i.delivery == 'streaming' %><%= link_to 'Watch Your Video', watch_order_item_path(@order.uuid, i.id) %><% end -%>
+        <div class="buttons">
+        <% if i.delivery == 'download' %><%= link_to image_tag('themes/vidli/icons/download.png') + ' Download Video', download_order_item_path(@order.uuid, i.id) %><% end -%>
+        <% if i.delivery == 'streaming' %><%= link_to image_tag('themes/vidli/icons/streaming.png') + ' Watch Your Video', watch_order_item_path(@order.uuid, i.id) %><% end -%>
+        </div>
       </td>
       <td class="total"><%= number_to_currency i.price %></td>
     </tr>
