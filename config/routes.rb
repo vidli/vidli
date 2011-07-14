@@ -9,6 +9,8 @@ Vidli::Application.routes.draw do
   match 'videos/show/:id', :to => 'videos#show', :as => 'show_video'
   match 'videos/search', :to => 'videos#search', :as => 'search_videos'
   match 'videos/search/:q', :to => 'videos#search', :as => 'query_search_videos'
+  match 'videos/watch', :to => 'videos#watch', :as => 'watch_videos'
+  match 'videos/download', :to => 'videos#download', :as => 'download_videos'
 
   ## CART
   match 'cart', :to => 'cart#index', :as => 'cart'

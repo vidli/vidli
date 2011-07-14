@@ -19,6 +19,10 @@
       <ul class="menu">
       <% if current_user -%>
         <li>Welcome Back <%= link_to current_user.full_name, account_url %>! <%= link_to(image_tag('themes/vidli/icons/x-dark_blue-small.png', :alt => 'Logout'), logout_path, :class => 'logout') %></li>
+        <li class="divider">|</li> 
+        <li><%= link_to 'Watch Videos', watch_videos_path %></li>
+        <li class="divider">|</li> 
+        <li><%= link_to 'Download Videos', download_videos_path %></li>
       <% else -%>
         <li><%= link_to 'Login', login_path %></li>
         <li class="divider">|</li>

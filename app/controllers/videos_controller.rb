@@ -21,6 +21,17 @@ class VideosController < ApplicationController
       format.html { render :search }
       format.xml  { render :xml => @videos }
     end
+  end
+  
+  def watch
+    redirect_to root_path if !current_user
     
+    @order_items = current_user.order_items.streamable.paginate :per_page => 10, :page => params[:page]
+  end
+
+  def download
+    redirect_to root_path if !current_user
+    
+    @order_items = current_user.order_items.downloadable.paginate :per_page => 10, :page => params[:page]
   end
 end

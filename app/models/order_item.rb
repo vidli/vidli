@@ -2,6 +2,9 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :video
   
+  named_scope :downloadable, :conditions => 'delivery = "download"'
+  named_scope :streamable, :conditions => 'delivery = "streaming"'
+  
   composed_of :price,
     :class_name => "Money",
     :mapping => [%w(price_in_cents cents)],

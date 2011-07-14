@@ -1,0 +1,38 @@
+<style>
+.watch_or_download .experience .buttons a {
+  float: right;
+  margin: 0 10px 0 0;
+}
+
+.watch_or_download .image {
+  width: 140px;
+}
+</style>
+<% if order_items.empty? -%>
+<h3>No videos purchased yet</h3>
+<% else -%>
+<table class="watch_or_download common43h">
+  <thead>
+    <tr class="titles">
+      <th class="image">Video Details</th>
+      <th class="details"></th>
+      <th class="experience"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% order_items.each do |i| -%>
+    <tr class="row">
+      <td class="image"><%= link_to image_tag(i.video.screenshot.url(:tiny)), show_video_path(i.video) if i.video.screenshot.exists? %></td>
+      <td class="details"><%= link_to i.video.title, show_video_path(i.video) %></td>
+      <td class="experience">
+        <div class="buttons">
+        <% if i.delivery == 'download' %><%= link_to image_tag('themes/vidli/icons/download.png') + ' Download Video', download_order_item_path(i.order.uuid, i.id) %><% end -%>
+        <% if i.delivery == 'streaming' %><%= link_to image_tag('themes/vidli/icons/streaming.png') + ' Watch Your Video', watch_order_item_path(i.order.uuid, i.id) %><% end -%>
+        </div>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+<%= paginate order_items %>
+<% end -%>
