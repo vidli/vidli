@@ -1,6 +1,4 @@
 Vidli::Application.routes.draw do
-  get "checkout/express"
-
   resources :s3_uploads
 
   root :to => "home#index"

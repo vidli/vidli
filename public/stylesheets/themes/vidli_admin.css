@@ -1,0 +1,360 @@
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: helvetica, arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+  margin: 0;
+  padding: 0;
+  color: #008BCD;
+}
+
+h2 {
+  margin: 0 0 15px 0;
+}
+
+a {
+  color: #008BCD;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Digg Pagination */
+
+.digg_pagination {
+  background: white;
+  /* self-clearing method: */ 
+}
+  
+.digg_pagination a, .digg_pagination em, .digg_pagination span {
+  padding: .2em .5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+  font-size: 0.8em;
+}
+
+.digg_pagination span.disabled {
+  color: #999;
+  border: 1px solid #DDD;
+}
+
+.digg_pagination em {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+.digg_pagination em.current {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+.digg_pagination a {
+  text-decoration: none;
+  color: #105CB6;
+  border: 1px solid #9AAFE5;
+}
+
+.digg_pagination a:hover, .digg_pagination a:focus {
+  color: #003;
+  border-color: #003;
+}
+
+.digg_pagination .page_info {
+  background: #2E6AB1;
+  color: white;
+  padding: .4em .6em;
+  width: 22em;
+  margin-bottom: .3em;
+  text-align: center;
+}
+
+.digg_pagination .page_info b {
+  color: #003;
+  background: #6aa6ed;
+  padding: .1em .25em;
+}
+
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+* html .digg_pagination {
+  height: 1%;
+}
+
+*:first-child+html .digg_pagination {
+  overflow: hidden;
+}
+
+/** Buttons **/
+
+.buttons a, .buttons button{
+    display:block;
+    float:left;
+    margin:0 7px 0 0;
+    background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;    
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:100%;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+    padding:5px 10px 6px 7px; /* Links */
+}
+.buttons button{
+    width:auto;
+    overflow:visible;
+    padding:4px 10px 3px 7px; /* IE6 */
+}
+.buttons button[type]{
+    padding:5px 10px 5px 7px; /* Firefox */
+    line-height:17px; /* Safari */
+}
+*:first-child+html button[type]{
+    padding:4px 10px 3px 7px; /* IE7 */
+}
+.buttons button img, .buttons a img{
+    margin:0 3px -3px 0 !important;
+    padding:0;
+    border:none;
+    width:16px;
+    height:16px;
+}
+
+/* STANDARD */
+button:hover, .buttons a:hover{
+    background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+    color:#336699;
+}
+.buttons a:active{
+    background-color:#6299c5;
+    border:1px solid #6299c5;
+    color:#fff;
+}
+/* POSITIVE */
+button.positive, .buttons a.positive{
+    color:#529214;
+}
+.buttons a.positive:hover, button.positive:hover{
+    background-color:#E6EFC2;
+    border:1px solid #C6D880;
+    color:#529214;
+}
+.buttons a.positive:active{
+    background-color:#529214;
+    border:1px solid #529214;
+    color:#fff;
+}
+/* NEGATIVE */
+.buttons a.negative, button.negative{
+    color:#d12f19;
+}
+.buttons a.negative:hover, button.negative:hover{
+    background:#fbe3e4;
+    border:1px solid #fbc2c4;
+    color:#d12f19;
+}
+.buttons a.negative:active{
+    background-color:#d12f19;
+    border:1px solid #d12f19;
+    color:#fff;
+}
+
+/** Layout **/
+
+.container {
+  margin: 0 auto;
+  width: 980px;
+}
+
+/** Super Header **/
+
+.super {
+  background: #00B1E7;
+  height: 24px;
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.super a {
+  color: #fff;
+}
+
+.super .container .cart {
+  float: left;
+  padding: 3px 0 0 0;
+}
+
+.super .container .menu {
+  float: right;
+  padding: 3px 0 0 0;
+  margin: 0;
+}
+
+.super .container .menu li {
+  display: inline;
+}
+
+/** Header **/
+
+.header {
+  margin: 20px 0;
+}
+
+.header .container .logo {
+  float: left;
+}
+
+/** Footer **/
+
+.footer p {
+  padding: 20px 0 0 0;
+  color: #A2A2A2;
+  font-size: 0.8em;
+}
+
+.footer p a {
+  color: #A2A2A2;
+}
+
+/** Tables - Common 43 Height **/
+
+.common43h {
+  width: 100%;
+  border-spacing: 0;
+  margin: 20px 0 20px 0;
+}
+
+.common43h tr.titles {
+  background: url(/images/themes/vidli/common/tables/bg-column_titles-43h.gif) repeat-x top left;
+  height: 43px;
+  padding: 0;
+}
+
+.common43h .titles th {
+  font-size: 0.9em;
+  font-weight: normal;
+  text-align: left;
+  color: #4b4b4b;
+  padding: 0 0 0 10px;
+}
+
+.common43h .row {
+  background: #f9f9f9;
+}
+
+.common43h td {
+  padding: 20px 0 20px 10px;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.common43h td a {
+  color: #018EEF;
+}
+
+/** Flash Messages **/
+
+.messages .container .flash .notice,
+.messages .container .flash .error {
+  padding: 15px 15px 15px 10px;
+  margin: 0 0 20px 0;
+}
+
+.messages .container .flash .notice {
+  color: #298f24;
+  background: #f5f5f5 url(/images/themes/vidli/messages/bg-notice.png) repeat-x bottom left;
+  border: 1px solid #439f32;
+}
+
+.messages .container .flash .error {
+  color: #e76c5d;
+  background: #f5f5f5 url(/images/themes/vidli/messages/bg-error.png) repeat-x bottom left;
+  border: 1px solid #e76757;
+}
+
+.messages .container .flash .error p,
+.messages .container .flash .notice p {
+  padding: 0 0 0 25px;
+  margin: 0;
+}
+
+.messages .container .flash .notice p {
+  background: url(/images/themes/vidli/icons/check.png) no-repeat top left;
+}
+
+.messages .container .flash .error p {
+  background: url(/images/themes/vidli/icons/error.png) no-repeat top left;
+}
+
+/** Form Fields **/
+
+.error_explanation ul li {
+  list-style-image: url('/images/themes/vidli/icons/error.png');
+  color: red;
+}
+
+.field {
+  margin: 0 0 10px 0;
+}
+
+.field_checkbox label {
+  color: #666;
+}
+
+.field_text label {
+  display: block;
+  color: #666;
+}
+
+.field_text input {
+  width: 300px;
+  font-size: 1.3em;
+  padding: 4px;
+  border: 1px solid #666;
+}
+
+.field .field_with_errors {
+  display: inline;
+}
+
+.field .field_with_errors label {
+  color: red;
+}
+
+.field .field_with_errors input {
+  color: red;
+  border: 1px solid red;
+}

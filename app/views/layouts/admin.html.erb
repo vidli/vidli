@@ -2,16 +2,53 @@
 <html>
 <head>
   <title>Vidli - Administration</title>
-  <%= stylesheet_link_tag :all %>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1<%= Rails.env == 'development' ? '.min' : '' %>.js"></script>
+  <%= stylesheet_link_tag 'themes/vidli_admin.css' %>
+  <%= javascript_include_tag 'jquery-1.6.2' + (RAILS_ENV == 'production' ? '' : '.min') + '.js'%>
 	<%= javascript_include_tag 'jwplayer' %>
+	<%= javascript_include_tag 'themes/vidli_admin.js' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div class="super clearfix">
+    <div class="container">
+      <ul class="menu">
+        <li><%= link_to 'Home', root_path %></li>
+        <li class="divider">|</li>
+        <li><%= link_to 'Users', admin_users_path %></li>
+        <li class="divider">|</li>
+        <li><%= link_to 'Videos', admin_videos_path %></li>
+        <li class="divider">|</li>
+        <li><%= link_to 'Orders', admin_orders_path %></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="header clearfix">
+    <div class="container">
+      <div class="logo"><a href="/" title="Video Licensing"><%= image_tag 'themes/vidli/common/vidli-logo.png', :alt => 'Video Licensing' %></a></div>
+    </div>
+  </div>
 
-<p><%= link_to 'Home', root_path %> | <%= link_to 'Users', admin_users_path %> | <%= link_to 'Videos', admin_videos_path %> | <%= link_to 'Orders', admin_orders_path %></p>
+  <div class="messages clearfix">
+    <div class="container">
+      <div class="flash">
+        <% if flash[:error]%><div class="error"><p><%= flash[:error] %></p></div><% end -%>
+        <% if flash[:notice]%><div class="notice"><p><%= flash[:notice] %></p></div><% end -%>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content clearfix">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
 
-<%= yield %>
+  <div class="footer clearfix">
+    <div class="container">
+      <p>&copy; All Rights Reserved. Video eCommerce powered by <%= link_to 'Vidli', 'http://vidli.com' %> &reg;</p>
+    </div>
+  </div>
 
 </body>
 </html>

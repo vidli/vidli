@@ -1,23 +1,41 @@
-<h1>Listing videos</h1>
+<h1>Listing All Videos</h1>
 
-<table>
-  <tr>
+<style>
+.video_list .image {
+  width: 120px;
+}
+
+.video_list .enabled {
+  width: 100px;
+}
+
+.video_list .buttons {
+  width: 200px;
+}
+</style>
+
+<table class="video_list common43h">
+  <tr class="titles">
+    <th class="image">Image</th>
     <th>Title</th>
-    <th></th>
-    <th></th>
+    <th class="enabled">Enabled?</th>
     <th></th>
   </tr>
-
 <% @videos.each do |video| %>
-  <tr>
-    <td><%= h video.title %></td>
-    <td><%= link_to 'Show', [:admin, video] %></td>
-    <td><%= link_to 'Edit', edit_admin_video_path(video) %></td>
-    <td><%= link_to 'Destroy', [:admin, video], :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr class="row">
+    <td class="image"><%= link_to image_tag(video.screenshot.url(:tiny)), [:admin, video] if video.screenshot.exists? %></td>
+    <td><%= link_to h(video.title), [:admin, video] %></td>
+    <td class="enabled"><%= video.enabled? ? image_tag('themes/vidli/icons/check.png') : image_tag('themes/vidli/icons/cancel.png') %>
+    <td class="buttons">
+      <%= link_to image_tag('themes/vidli/icons/pencil.png') + ' Edit', edit_admin_video_path(video) %>
+      <%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Destroy', [:admin, video], :confirm => 'Are you sure?', :method => :delete, :class => 'negative' %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<%= paginate @videos %><br />
 
-<%= link_to 'New Video', new_admin_video_path %>
+<div class="buttons">
+  <%= link_to image_tag('themes/vidli/icons/add.png') + ' New Video', new_admin_video_path, :class => 'positive' %>
+</div>

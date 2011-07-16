@@ -1,4 +1,6 @@
 class Video < ActiveRecord::Base
+  scope :enabled, where("((videos.price_download_in_cents > 0 AND videos.downloadable = 1) OR (videos.price_streaming_in_cents > 0 AND videos.streamable = 1)) AND videos.s3_path IS NOT NULL")
+  
   has_attached_file :screenshot, :styles => { :large => '640x480>', :medium => "400x300>", :thumb => "188x110>", :tiny => '100x100>' }
   
   composed_of :price_download,
@@ -37,5 +39,9 @@ class Video < ActiveRecord::Base
     end
     
     return [sold, order_uuid, order_item_id]
+  end
+  
+  def enabled?
+    ((price_download > 0.to_money && downloadable?) || (price_streaming > 0.to_money && streamable?)) && !s3_path.empty?
   end
 end

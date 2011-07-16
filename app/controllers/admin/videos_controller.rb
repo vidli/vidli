@@ -2,7 +2,7 @@ class Admin::VideosController < Admin::AdminController
   filter_access_to :all, :context => :admin_videos
 
   def index
-    @videos = Video.all
+    @videos = Video.all.paginate :per_page => 10, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,4 +1,7 @@
 <div class="videos clearfix">
+<% if videos.empty? -%>
+  <h3>No videos found</h3>
+<% else -%>
   <% videos.each_with_index do |v, idx| %>
     <% if idx != 0 && idx % 5 == 0 -%>
     <div class="row"></div>
@@ -12,5 +15,6 @@
       <%= link_to v.title, show_video_path(v), :class => 'title' %>
     </div>
   <% end -%>
+<% end -%>
 </div>
 <%= paginate videos %>

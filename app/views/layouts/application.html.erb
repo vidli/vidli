@@ -8,9 +8,6 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<style>
-
-</style>
   <div class="super clearfix">
     <div class="container">
       <div class="cart">
@@ -39,7 +36,7 @@
     <div class="container">
       <div class="logo"><a href="/" title="Video Licensing"><%= image_tag 'themes/vidli/common/vidli-logo.png', :alt => 'Video Licensing' %></a></div>
       <div class="search">
-      	<% form_tag(search_videos_path, :method => :get ) do %>
+      	<%= form_tag(search_videos_path, :method => :get ) do %>
       		<%= text_field_tag :q, params[:q], :class => 'query off', :id => 'header_search' %>
       		<%= image_submit_tag 'themes/vidli/icons/search.png', :name => "", :class => 'submit' %>
       	<% end %>
@@ -61,7 +58,6 @@
       <%= yield %>
     </div>
   </div>
-
 
   <div class="footer clearfix">
     <div class="container">
