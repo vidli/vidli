@@ -1,0 +1,70 @@
+#require "bundler/capistrano"
+
+set :application, "demo.vidli.com"
+set :repository,  "git@github.com:vidli/vidli.git"
+set :use_sudo,     false
+set :domain,       "vidli.com"
+set :user,         'deploy'
+set :scm,          :git
+#set :deploy_via,   :rsync_with_remote_cache
+set :deploy_via,   :remote_cache
+set :keep_releases, 5
+
+# taken from Advanced Rails Recipes  
+desc "Watch multiple log files at the same time"  
+  task :tail_log, :roles => :app do  
+  stream "tail -f #{shared_path}/log/production.log"  
+end
+
+# call this if 'deploy_via :remote_cache' is set  
+# and you want to deploy a different tag or branch  
+# inspired from Jonathan Weiss' explanation of the issue  
+# http://blog.innerewut.de/2008/3/12/remote-cache-pitfalls  
+task :delete_remote_cache, :roles => :app do  
+  run "rm -rf #{shared_path}/cached-copy"  
+end
+
+task :production do
+  set :deployment, 'production'
+  set :hostname,   "demo.vidli.com"
+  role :app,       "demo.vidli.com"
+  role :web,       "demo.vidli.com"
+  role :db,        "demo.vidli.com", :primary => true
+end
+
+namespace :deploy do
+  namespace :passenger do
+    desc "ask passenger to restart our rails app"
+    task :restart do
+      invoke_command "touch #{current_path}/tmp/restart.txt"
+    end
+  end
+  
+  desc "Custom restart task for web server"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    deploy.passenger.restart
+  end
+  
+  desc "set up symlinks for server configuration files"
+  task :symlink_config_files do
+    #run "cp #{deploy_to}/#{shared_dir}/config/*.yml #{release_path}/config/"
+     run "ln -fs #{deploy_to}/#{shared_dir}/config/*.yml #{release_path}/config/"
+  end
+  
+  task :update_shared, :roles => [:app] do
+    %w( tmp log public/system ).each do |dir|
+      run "rm -rf #{release_path}/#{dir} && ln -nfs #{shared_path}/#{dir} #{release_path}/#{dir}"
+    end
+  end
+
+  task :create_shared, :roles => [:app] do
+    %w( tmp log public/system config ).each do |dir|
+      run "mkdir -p #{shared_path}/#{dir}"
+    end
+  end
+
+end
+
+after 'deploy:update_code', 'deploy:update_shared'
+after "deploy:update_code", "deploy:symlink_config_files"
+after 'deploy:setup', 'deploy:create_shared'
