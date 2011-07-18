@@ -3,6 +3,8 @@ class Video < ActiveRecord::Base
   
   has_attached_file :screenshot, :styles => { :large => '640x480>', :medium => "400x300>", :thumb => "188x110>", :tiny => '100x100>' }
   
+  validate :validate_prices
+  
   composed_of :price_download,
     :class_name => "Money",
     :mapping => [%w(price_download_in_cents cents)],
@@ -15,6 +17,22 @@ class Video < ActiveRecord::Base
     :constructor => Proc.new { |cents| Money.new(cents || 0, Money.default_currency) },
     :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
 
+  def validate_prices
+    # IF we are offering for download, make sure the price is valid
+    if downloadable?
+      if price_download <= 0
+        errors.add(:price_download, 'must be greater than zero')
+      end
+    end
+
+    # IF we are offering for streaming, make sure the price is valid
+    if streamable?
+      if price_streaming <= 0
+        errors.add(:price_streaming, 'must be greater than zero')
+      end
+    end
+  end
+  
   def s3_url
     "http://s3.amazonaws.com/#{S3SwfUpload::S3Config.bucket}/#{s3_path}"
   end
@@ -42,6 +60,6 @@ class Video < ActiveRecord::Base
   end
   
   def enabled?
-    ((price_download > 0.to_money && downloadable?) || (price_streaming > 0.to_money && streamable?)) && !s3_path.empty?
+    ((price_download > 0.to_money && downloadable?) || (price_streaming > 0.to_money && streamable?)) && (s3_path && !s3_path.empty?)
   end
 end

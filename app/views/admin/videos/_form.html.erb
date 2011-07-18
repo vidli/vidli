@@ -1,51 +1,45 @@
 <%= form_for([:admin, @video], :html => { :multipart => true }) do |f| %>
-  <% if @video.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+  <%= render "shared/error_messages", :target => @video %>
 
-      <ul>
-      <% @video.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :title %><br />
+  <div class="field field_text">
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description, 'Description (Textile)' %><br />
+  <div class="field field_textarea">
+    <%= f.label :description, 'Description (Textile)' %>
     <%= f.text_area :description %>
   </div>
   
-  <div class="field">
+  <div class="field field_file">
     <%= f.label :screenshot %>
+    <%= image_tag f.object.screenshot(:tiny) if f.object.screenshot.exists? %>
     <%= f.file_field :screenshot %>
   </div>
+  
+  <div class="field field_checkbox">
+    <%= f.check_box :downloadable %>
+    <%= f.label :downloadable, 'Sell via Download' %>
+  </div>
 
-  <div class="field">
+  <div class="field field_text" id="field_price_download" <%= raw f.object.downloadable? ? '' : 'style="display:none"'%>>
     <%= f.label :price_download, 'Price for Download' %>
     <%= f.text_field :price_download %>
   </div>
 
-  <div class="field">
-    <%= f.label :downloadable, 'Sell via Download' %>
-    <%= f.check_box :downloadable %>
+  <div class="field field_checkbox">
+    <%= f.check_box :streamable %>
+    <%= f.label :streamable, 'Sell via Streaming' %>
   </div>
 
-  <div class="field">
+  <div class="field field_text" id="field_price_streaming" <%= raw f.object.streamable? ? '' : 'style="display:none"'%>>
     <%= f.label :price_streaming, 'Price for Streaming' %>
     <%= f.text_field :price_streaming %>
   </div>
 
-  <div class="field">
-    <%= f.label :streamable, 'Sell via Stream' %>
-    <%= f.check_box :streamable %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions buttons clearfix">
+    <button type="submit" class="positive">
+      <%= image_tag('themes/vidli/icons/check.png') %>
+      Update Video
+    </button>
   </div>
 <% end %>

@@ -1,33 +1,48 @@
 <h1>Editing Video</h1>
 
 <%= render 'form' %>
+<style>
+</style>
+<fieldset class="video_file_raw">
+  <legend>Raw Video File</legend>
+  <div class="field">
+    <% if !@video.s3_path %>
+    <%= raw s3_swf_upload_tag(
+      :fileTypes => '*.mp4;*.mov;*.f4v',
+      :onQueueChange => "queueChangeHandler(queue);",
+      :onQueueSizeLimitReached => "alert('Please clear the selected file first');",
+      :onSignatureIOError => "alert('There was an error');",
+      :onSignatureXMLError => "alert('There was an error');",
+      :onSignatureSecurityError => "alert('There was an error');",
+      :onUploadIOError => "alert('There was an error');",
+      :onUploadError => "alert('There was an error');",
+      :queueSizeLimit => 1,
+      :onUploadProgress => "progressHandler(progress_event);",
+      :onUploadComplete => "uploadCompleteHandler(upload_options,event,#{@video.id});",
+      :onUploadingStart => "uploadingStartHandler();"
+    ) %>
+    <div id="upload_file"></div>
+    <div id="upload_queue_size"></div>
+    <div id="upload_progress"></div>
+    <div class="buttons clearfix">
+    	<button type="submit" id="StartButton" onclick="queueUpload();" style="display: none;" class="positive">
+    	  <%= image_tag('themes/vidli/icons/upload.png') %>
+    	  Start Uploading
+    	</button>
+      <button type="submit" id="ResetButton" onclick="queueReset();" style="display: none;" class="negative">
+    	  <%= image_tag('themes/vidli/icons/cancel.png') %>
+        Clear
+      </button>
+    </div>
+  	<% else %>
+    	<%= @video.s3_url %>
+    	<div class="buttons clearfix">
+      	<%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Clear Upload', delete_s3_asset_admin_video_path(@video), :class => 'negative' %>
+      </div>
+  	<% end %>
+  </div>
+</fieldset>
 
-<div class="field">
-  <% if !@video.s3_path %>
-  <%= raw s3_swf_upload_tag(
-    :fileTypes => '*.mp4;*.mov;*.f4v',
-    :onQueueChange => "queueChangeHandler(queue);",
-    :onQueueSizeLimitReached => "alert('Please clear the selected file first');",
-    :onSignatureIOError => "alert('There was an error');",
-    :onSignatureXMLError => "alert('There was an error');",
-    :onSignatureSecurityError => "alert('There was an error');",
-    :onUploadIOError => "alert('There was an error');",
-    :onUploadError => "alert('There was an error');",
-    :queueSizeLimit => 1,
-    :onUploadProgress => "progressHandler(progress_event);",
-    :onUploadComplete => "uploadCompleteHandler(upload_options,event,#{@video.id});",
-    :onUploadingStart => "uploadingStartHandler();"
-  ) %>
-  <div id="upload_file"></div>
-  <div id="upload_queue_size"></div>
-  <div id="upload_progress"></div>
-	<input type="submit" id="StartButton" value="Start Uploading" onclick="queueUpload();" style="display: none;"/>
-	<input type="submit" id="ResetButton" value="Clear" onclick="queueReset();" />
-	<% else %>
-	<%= @video.s3_url %><%= link_to 'Delete', delete_s3_asset_admin_video_path(@video) %>
-	<% end %>
+<div class="buttons">
+  <%= link_to image_tag('themes/vidli/icons/magnify.png') + ' View Video', [:admin, @video] %>
 </div>
-
-
-<%= link_to 'Show', [:admin, @video] %> |
-<%= link_to 'Back', admin_videos_path %>

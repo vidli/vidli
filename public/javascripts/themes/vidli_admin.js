@@ -15,6 +15,7 @@ var queueChangeHandler = function(queue){
 	for (i = 0; i < queue.files.length; i++) {
 	  $('#upload_file').html(queue.files[i].name);
 	  $('#StartButton').show();
+	  $('#ResetButton').show();
 //  		addFileToTodoList(queue.files[i].name, queue.files[i].size, i);
 	}
 };
@@ -30,6 +31,7 @@ var progressHandler = function(progress_event){
 
 var queueReset = function() {
   $('#StartButton').hide();
+  $('#ResetButton').hide();
   $('#upload_file').empty();
   $('#upload_progress').empty();
   s3_swf_1_object.clearQueue();
@@ -62,3 +64,24 @@ var readableBytes = function(bytes) {
   var e = Math.floor(Math.log(bytes)/Math.log(1024));
   return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2)+" "+s[e];
 }
+
+// Video
+$(document).ready(function() {
+	
+	$('#video_downloadable').change(function() {
+	  if ($(this).is(':checked')) {
+	    $('#field_price_download').show();
+	  } else {
+	    $('#field_price_download').hide();
+	  }
+	});
+
+	$('#video_streamable').change(function() {
+	  if ($(this).is(':checked')) {
+	    $('#field_price_streaming').show();
+	  } else {
+	    $('#field_price_streaming').hide();
+	  }
+	});
+
+});

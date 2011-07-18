@@ -7,11 +7,7 @@
   <%= image_tag @video.screenshot.url(:thumb) if @video.screenshot.exists? %>
 </p>
 
-<% if !@video.s3_path %>
-<div class="buttons">
-  <%= link_to image_tag('themes/vidli/icons/add.png') + ' Add Video File', edit_admin_video_path(@video), :class => 'positive' %>
-</div>
-<% else %>
+<% if @video.s3_path %>
 <p>
   <b>Download:</p>
   <%= link_to @video.s3_url, @video.s3_url %>
@@ -32,6 +28,6 @@
 <% end %>
 
 <div class="buttons">
-  <%= link_to image_tag('themes/vidli/icons/pencil.png') + ' Edit', edit_admin_video_path(@video), :class => 'positive' %>
-  <%= link_to 'Show All Videos', admin_videos_path %>
+  <%= link_to image_tag('themes/vidli/icons/pencil.png') + ' Edit Video', edit_admin_video_path(@video), :class => 'positive' %>
+  <%= link_to image_tag('themes/vidli/icons/magnify.png') + ' Show All Videos', admin_videos_path %>
 </div>

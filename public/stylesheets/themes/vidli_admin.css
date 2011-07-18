@@ -26,8 +26,12 @@ h1,h2,h3,h4,h5 {
   color: #008BCD;
 }
 
-h2 {
+h1 {
   margin: 0 0 15px 0;
+}
+
+h2 {
+  margin: 0 0 10px 0;
 }
 
 a {
@@ -36,6 +40,11 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+fieldset legend {
+  color: #008BCD;
+  font-weight: bold;
 }
 
 /* Digg Pagination */
@@ -346,6 +355,24 @@ button.positive, .buttons a.positive{
   border: 1px solid #666;
 }
 
+.field_textarea label {
+  display: block;
+  color: #666;
+}
+
+.field_textarea textarea {
+  width: 300px;
+  height: 200px;
+  font-size: 0.9em;
+  padding: 4px;
+  border: 1px solid #666;
+}
+
+.field_file label {
+  display: block;
+  color: #666;
+}
+
 .field .field_with_errors {
   display: inline;
 }
@@ -357,4 +384,10 @@ button.positive, .buttons a.positive{
 .field .field_with_errors input {
   color: red;
   border: 1px solid red;
+}
+
+/* Videos - Edit */
+
+.video_file_raw {
+  margin: 20px 0 20px;
 }
