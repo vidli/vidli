@@ -1,13 +1,13 @@
 <h1>Editing Video</h1>
 
 <%= render 'form' %>
-<style>
-</style>
-<fieldset class="video_file_raw">
-  <legend>Raw Video File</legend>
+
+<fieldset class="video_upload">
+  <legend>Video Upload</legend>
   <div class="field">
     <% if !@video.s3_path %>
     <%= raw s3_swf_upload_tag(
+      :signaturePath => '/admin/s3_uploads.xml',
       :fileTypes => '*.mp4;*.mov;*.f4v',
       :onQueueChange => "queueChangeHandler(queue);",
       :onQueueSizeLimitReached => "alert('Please clear the selected file first');",
@@ -23,7 +23,15 @@
     ) %>
     <div id="upload_file"></div>
     <div id="upload_queue_size"></div>
-    <div id="upload_progress"></div>
+    <div id="upload_progress" style="display: none;">
+      <div class="video_upload_meter_wrap">
+          <div class="video_upload_meter_value" style="background-color: #0a0; width: 0%;">
+              <div class="video_upload_meter_text">
+                  0%
+              </div>
+          </div>
+      </div>
+    </div>
     <div class="buttons clearfix">
     	<button type="submit" id="StartButton" onclick="queueUpload();" style="display: none;" class="positive">
     	  <%= image_tag('themes/vidli/icons/upload.png') %>

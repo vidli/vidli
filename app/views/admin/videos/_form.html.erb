@@ -1,45 +1,48 @@
-<%= form_for([:admin, @video], :html => { :multipart => true }) do |f| %>
-  <%= render "shared/error_messages", :target => @video %>
+<fieldset class="video_details">
+  <legend>Video Details</legend>
+  <%= form_for([:admin, @video], :html => { :multipart => true }) do |f| %>
+    <%= render "shared/error_messages", :target => @video %>
 
-  <div class="field field_text">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field field_textarea">
-    <%= f.label :description, 'Description (Textile)' %>
-    <%= f.text_area :description %>
-  </div>
+    <div class="field field_text">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field field_textarea">
+      <%= f.label :description, 'Description (Textile)' %>
+      <%= f.text_area :description %>
+    </div>
   
-  <div class="field field_file">
-    <%= f.label :screenshot %>
-    <%= image_tag f.object.screenshot(:tiny) if f.object.screenshot.exists? %>
-    <%= f.file_field :screenshot %>
-  </div>
+    <div class="field field_file">
+      <%= f.label :screenshot %>
+      <%= image_tag f.object.screenshot(:tiny) if f.object.screenshot.exists? %>
+      <%= f.file_field :screenshot %>
+    </div>
   
-  <div class="field field_checkbox">
-    <%= f.check_box :downloadable %>
-    <%= f.label :downloadable, 'Sell via Download' %>
-  </div>
+    <div class="field field_checkbox">
+      <%= f.check_box :downloadable %>
+      <%= f.label :downloadable, 'Sell via Download' %>
+    </div>
 
-  <div class="field field_text" id="field_price_download" <%= raw f.object.downloadable? ? '' : 'style="display:none"'%>>
-    <%= f.label :price_download, 'Price for Download' %>
-    <%= f.text_field :price_download %>
-  </div>
+    <div class="field field_text" id="field_price_download" <%= raw f.object.downloadable? ? '' : 'style="display:none"'%>>
+      <%= f.label :price_download, 'Price for Download' %>
+      <%= f.text_field :price_download %>
+    </div>
 
-  <div class="field field_checkbox">
-    <%= f.check_box :streamable %>
-    <%= f.label :streamable, 'Sell via Streaming' %>
-  </div>
+    <div class="field field_checkbox">
+      <%= f.check_box :streamable %>
+      <%= f.label :streamable, 'Sell via Streaming' %>
+    </div>
 
-  <div class="field field_text" id="field_price_streaming" <%= raw f.object.streamable? ? '' : 'style="display:none"'%>>
-    <%= f.label :price_streaming, 'Price for Streaming' %>
-    <%= f.text_field :price_streaming %>
-  </div>
+    <div class="field field_text" id="field_price_streaming" <%= raw f.object.streamable? ? '' : 'style="display:none"'%>>
+      <%= f.label :price_streaming, 'Price for Streaming' %>
+      <%= f.text_field :price_streaming %>
+    </div>
 
-  <div class="actions buttons clearfix">
-    <button type="submit" class="positive">
-      <%= image_tag('themes/vidli/icons/check.png') %>
-      Update Video
-    </button>
-  </div>
-<% end %>
+    <div class="actions buttons clearfix">
+      <button type="submit" class="positive">
+        <%= image_tag('themes/vidli/icons/check.png') %>
+        Update Video
+      </button>
+    </div>
+  <% end %>
+</fieldset>

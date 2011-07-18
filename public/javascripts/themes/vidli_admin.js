@@ -22,11 +22,13 @@ var queueChangeHandler = function(queue){
 
 var uploadingStartHandler = function(){
   uploadStarted = true;
+	$('#upload_progress').show();
 };
 
 var progressHandler = function(progress_event){
-  var current_percentage = Math.floor((parseInt(progress_event.bytesLoaded)/parseInt(progress_event.bytesTotal))*100)+'%';
-  $('#upload_progress').html(current_percentage);
+  var current_percentage = Math.floor((parseInt(progress_event.bytesLoaded)/parseInt(progress_event.bytesTotal))*100) + '%';
+	$('.video_upload_meter_value').css('width', current_percentage);
+  $('.video_upload_meter_text').html(current_percentage);
 };
 
 var queueReset = function() {
@@ -46,7 +48,7 @@ var queueUpload = function() {
 var uploadCompleteHandler = function(upload_options,event,video_id) {
   uploadStarted = false;
   var file_name = upload_options.FileName;
-  console.log('Finished uploading... ' + file_name);
+  $('.video_upload_meter_text').html('Finished!');
   // update the video with the new video path
   $.ajax({
     type: 'POST',

@@ -1,7 +1,8 @@
 require 'base64'
 
-class S3UploadsController < ApplicationController
-
+class Admin::S3UploadsController < Admin::AdminController
+  filter_access_to :all, :context => :admin_s3uploads
+  
   # You might want to look at https and expiration_date below.
   #        Possibly these should also be configurable from S3Config...
 

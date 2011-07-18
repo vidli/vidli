@@ -10,7 +10,7 @@
 <% if @video.s3_path %>
 <p>
   <b>Download:</p>
-  <%= link_to @video.s3_url, @video.s3_url %>
+  <%= link_to download_admin_video_url(@video), download_admin_video_path(@video) %>
 </p>
 
 <p>
@@ -20,7 +20,7 @@
 	<script type="text/javascript">
 		jwplayer("mediaplayer").setup({
 			flashplayer: "/flash/player.swf",
-			file: "<%= @video.s3_url %>",
+			file: "<%= stream_admin_video_path(@video) %>.mov",
 			image: "<%= @video.screenshot.url(:medium) %>"
 		});
 	</script>

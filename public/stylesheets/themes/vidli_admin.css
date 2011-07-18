@@ -388,6 +388,36 @@ button.positive, .buttons a.positive{
 
 /* Videos - Edit */
 
-.video_file_raw {
+.video_details {
   margin: 20px 0 20px;
+}
+
+.video_upload {
+  margin: 20px 0 20px;
+}
+
+/* Progress Bar */
+
+.video_upload_meter_wrap {
+    position: relative;
+}
+
+.video_upload_meter_wrap, .video_upload_meter_value, .video_upload_meter_text {
+    /* The width and height of your image */
+    width: 155px; height: 30px;
+}
+
+.video_upload_meter_wrap, .video_upload_meter_value {
+    background: #bdbdbd url(/images/themes/vidli/videos/meter-outline.png) top left no-repeat;
+}
+            
+.video_upload_meter_text {
+    position: absolute;
+    top:0; left:0;
+
+    padding-top: 5px;
+                
+    color: #fff;
+    text-align: center;
+    width: 100%;
 }

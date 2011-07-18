@@ -105,4 +105,26 @@ class Admin::VideosController < Admin::AdminController
       format.html { redirect_to(edit_admin_video_url(@video)) }
     end
   end
+  
+  def download
+    @video = Video.find(params[:id])
+    
+    AWS::S3::Base.establish_connection!(
+      :access_key_id     => S3SwfUpload::S3Config.access_key_id, 
+      :secret_access_key => S3SwfUpload::S3Config.secret_access_key
+    )
+
+    redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => 60, :use_ssl => false)
+  end
+  
+  def stream
+    @video = Video.find(params[:id])
+    
+    AWS::S3::Base.establish_connection!(
+      :access_key_id     => S3SwfUpload::S3Config.access_key_id, 
+      :secret_access_key => S3SwfUpload::S3Config.secret_access_key
+    )
+
+    redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => 60, :use_ssl => false)
+  end
 end

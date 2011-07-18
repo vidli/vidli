@@ -1,6 +1,4 @@
 Vidli::Application.routes.draw do
-  resources :s3_uploads
-
   root :to => "home#index"
   
   ## VIDEOS
@@ -55,6 +53,8 @@ Vidli::Application.routes.draw do
       member do
         post 'update_s3_path'
         get 'delete_s3_asset'
+        get 'download'
+        get 'stream'
       end
     end
     
@@ -65,6 +65,8 @@ Vidli::Application.routes.draw do
         post "update_roles"
       end
     end
+    
+    resources :s3_uploads
   end
 
 # match ':controller(/:action(/:id))'

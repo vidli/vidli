@@ -33,14 +33,11 @@ class Video < ActiveRecord::Base
     end
   end
   
-  def s3_url
-    "http://s3.amazonaws.com/#{S3SwfUpload::S3Config.bucket}/#{s3_path}"
-  end
-  
   def self.get_search_condition(search=nil)
     conditions = ["title like ?", "%#{search}%"] if search
   end
   
+  # see if a video has been sold to a user via specific delivery type
   def sold_to?(user, delivery)
     sold = nil
     order_uuid = nil
