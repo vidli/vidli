@@ -1,4 +1,5 @@
-<h2>User Details</h2>
+<h1>User Details</h1>
 <p>Name: <%= @user.full_name %></p>
 <p>Email: <%= @user.email %></p>
-<%= render :partial => 'authorizations' %>
+<%= render :partial => 'roles' %>
+<%= render :partial => 'admin/orders/order_list', :locals => { :user => @user } %>

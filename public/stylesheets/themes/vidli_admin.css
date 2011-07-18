@@ -386,6 +386,20 @@ button.positive, .buttons a.positive{
   border: 1px solid red;
 }
 
+/* Videos - List */
+
+.video_list .image {
+  width: 120px;
+}
+
+.video_list .enabled {
+  width: 100px;
+}
+
+.video_list .buttons {
+  width: 200px;
+}
+
 /* Videos - Edit */
 
 .video_details {
@@ -420,4 +434,16 @@ button.positive, .buttons a.positive{
     color: #fff;
     text-align: center;
     width: 100%;
+}
+
+/* Users - Show */
+
+.user_roles {
+  margin: 0 0 20px 0;
+}
+
+/* Orders - Admin */
+
+.orders_address { 
+  color: #32A8F1;
 }

@@ -1,5 +1,5 @@
-<div class="roles">
-  <h3>Roles</h3>
+<div class="user_roles">
+  <h2>Roles</h2>
 	<% form_tag update_roles_admin_user_path(@user.id) do |a| -%>
     <% Role.all.each do |r| -%>
     <div class="field">
@@ -7,6 +7,11 @@
       <label for="roles_<%= r.id %>"><%= r.title %></label>
     </div>
   	<% end -%> 
-    <%= submit_tag 'Update Role' %>
+  	<div class="buttons clearfix">
+  	  <button type="submit" class="positive">
+  	    <%= image_tag 'themes/vidli/icons/check.png' %>
+        Save Roles
+      </button>
+    </div>
 	<% end -%> 
 </div>

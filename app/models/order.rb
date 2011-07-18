@@ -1,17 +1,21 @@
 class Order < ActiveRecord::Base
+  ## == ASSOCIATIONS
   belongs_to :user
   has_many :order_items, :dependent => :destroy
   has_many :transactions, :class_name => "OrderTransaction", :dependent => :destroy
 
+  ## == MONEY
   composed_of :total,
     :class_name => "Money",
     :mapping => [%w(total_in_cents cents)],
     :constructor => Proc.new { |cents| Money.new(cents || 0, Money.default_currency) },
     :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }  
   
-  
   # == VALIDATIONS
   validates_presence_of :user_id
+
+  # == SCOPES
+  default_scope :order => 'created_at DESC'
 
   def purchase
     response = process_purchase

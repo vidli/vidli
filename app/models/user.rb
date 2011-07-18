@@ -3,15 +3,20 @@ require 'format'
 class User < ActiveRecord::Base
   acts_as_authentic
   
+  # == ASSOCIATIONS
   has_many :assignments
   has_many :roles, :through => :assignments
   has_many :orders
   has_many :order_items, :through => :orders
   has_one :cart
 
+  # == VALIDATIONS
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_format_of     :email, :with => Format::EMAIL, :message => "is not valid"
+
+  # == SCOPES
+  default_scope :order => 'created_at DESC'
 
   def role_symbols
     roles.map do |role|

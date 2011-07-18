@@ -1,9 +1,25 @@
-<h2>Order Receipt</h2>
-<h3><%= @order.uuid.upcase %></h3>
+<h1>Order Receipt</h1>
+<h2><%= @order.uuid.upcase %></h2>
 <%= render :partial => 'orders/address', :locals => { :order => @order } %>
 
-<% @order.order_items.each do |i| -%>
-  <li><%= i.video.title %> - via <%= i.delivery %> - <%= number_to_currency i.price %></li>
-<% end -%>
-</ul>
-<p>Total: <%= number_to_currency @order.total %></p>
+<table class="order_contents common43h">
+  <thead>
+    <tr class="titles">
+      <th class="image">Video Details</th>
+      <th class="details"></th>
+      <th class="license">License</th>
+      <th class="total">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |i| -%>
+    <tr class="row">
+      <td class="image"><%= image_tag i.video.screenshot.url(:tiny) if i.video.screenshot.exists? %></td>
+      <td class="details"><%= link_to i.video.title, show_video_path(i.video) %></td>
+      <td class="license"><%= i.delivery %></td>
+      <td class="total"><%= number_to_currency i.price %></td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+<p class="order_total">Total: <%= number_to_currency @order.total %></p>

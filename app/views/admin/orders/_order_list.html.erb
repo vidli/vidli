@@ -1,0 +1,25 @@
+<h2>Order History</h2>
+<table class="common43h">
+  <thead>
+    <tr class="titles">
+      <th>Date</th>
+      <th>Order ID</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+<% if user.orders.empty? %>
+    <tr class="row">
+      <td colspan="2">No orders found</td>
+    </tr>
+<% else %>
+  <% user.orders.each do |o| -%>
+    <tr class="row">
+      <td><%= link_to date_full(o.created_at), admin_order_path(o.uuid) %></td>
+      <td><%= o.uuid.upcase %></td>
+      <td><%= number_to_currency o.total %></td>
+    </tr>
+  <% end -%>
+<% end -%>
+  </tbody>
+</table>

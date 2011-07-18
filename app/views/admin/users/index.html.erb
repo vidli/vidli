@@ -1,16 +1,19 @@
 <h1>Users</h1>
 
-<table>
-  <tr>
+<table class="user_list common43h">
+  <tr class="titles">
     <th>Email</th>
     <th>Name</th>
     <th>Orders</th>
   </tr>
 <% @users.each do |u| %>
-  <tr>
+  <tr class="row">
     <td><%= link_to u.email, [:admin, u] %></td>
     <td><%= u.full_name %></td>
     <td><%= u.orders.count %></td>
   </tr>
 <% end %>
 </table>
+
+<%= paginate @users %><br />
+

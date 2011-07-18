@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::AdminController
   filter_access_to :all, :context => :admin_users
   
   def index
-    @users = User.all
+    @users = User.all.paginate :per_page => 10, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

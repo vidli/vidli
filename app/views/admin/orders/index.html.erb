@@ -1,16 +1,21 @@
 <h1>Order History</h1>
 
-<table>
-  <tr>
+<table class="order_list common43h">
+  <tr class="titles">
     <th>Created On</th>
+    <th>Order ID</th>
     <th>User</th>
     <th>Total</th>
   </tr>
 <% @orders.each do |o| %>
-  <tr>
-    <td><%= link_to o.created_at, [:admin, o] %></td>
+  <tr class="row">
+    <td><%= link_to date_full(o.created_at), admin_order_path(o.uuid) %></td>
+    <td><%= o.uuid.upcase %></td>
     <td><%= link_to o.user.full_name, [:admin, o.user] %></td>
     <td><%= number_to_currency o.total %></td>
   </tr>
 <% end %>
 </table>
+
+<%= paginate @orders %><br />
+
