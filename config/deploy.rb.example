@@ -1,4 +1,4 @@
-#require "bundler/capistrano"
+require "bundler/capistrano"
 
 set :application, "demo.vidli.com"
 set :repository,  "git@github.com:vidli/vidli.git"

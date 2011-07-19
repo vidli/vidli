@@ -7,7 +7,12 @@
     <th class="enabled">Enabled?</th>
     <th></th>
   </tr>
-<% @videos.each do |video| %>
+<% if @videos.empty? %>
+  <tr class="row">
+    <td colspan="4">No videos added</td>
+  </tr>
+<% else %>
+  <% @videos.each do |video| -%>
   <tr class="row">
     <td class="image"><%= link_to image_tag(video.screenshot.url(:tiny)), [:admin, video] if video.screenshot.exists? %></td>
     <td><%= link_to h(video.title), [:admin, video] %></td>
@@ -17,7 +22,8 @@
       <%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Destroy', [:admin, video], :confirm => 'Are you sure?', :method => :delete, :class => 'negative' %>
     </td>
   </tr>
-<% end %>
+  <% end -%>
+<% end -%>
 </table>
 
 <%= paginate @videos %><br />

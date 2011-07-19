@@ -7,14 +7,20 @@
     <th>User</th>
     <th>Total</th>
   </tr>
-<% @orders.each do |o| %>
+<% if @orders.empty? %>
+  <tr class="row">
+    <td colspan="4">No videos added</td>
+  </tr>
+<% else %>
+  <% @orders.each do |o| -%>
   <tr class="row">
     <td><%= link_to date_full(o.created_at), admin_order_path(o.uuid) %></td>
     <td><%= o.uuid.upcase %></td>
     <td><%= link_to o.user.full_name, [:admin, o.user] %></td>
     <td><%= number_to_currency o.total %></td>
   </tr>
-<% end %>
+  <% end -%>
+<% end -%>
 </table>
 
 <%= paginate @orders %><br />
