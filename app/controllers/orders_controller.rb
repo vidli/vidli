@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       :secret_access_key => S3SwfUpload::S3Config.secret_access_key
     )
 
-    redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => 60, :use_ssl => false)
+    redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => VidliConfig.s3_expires_in, :use_ssl => false)
   end
   
   def streaming
@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
       :secret_access_key => S3SwfUpload::S3Config.secret_access_key
     )
 
-    redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => 60, :use_ssl => false)
+    redirect_to AWS::S3::S3Object.url_for(@video.s3_path, S3SwfUpload::S3Config.bucket, :expires_in => VidliConfig.s3_expires_in, :use_ssl => false)
   end
   
   def watch
