@@ -2,10 +2,12 @@
 
 <%= redcloth @video.description %>
 
+<% if @video.screenshot.exists? -%>
 <b>Screenshot:</b>
 <p>
-  <%= image_tag @video.screenshot.url(:thumb) if @video.screenshot.exists? %>
+  <%= image_tag @video.screenshot.url(:thumb) %>
 </p>
+<% end -%>
 
 <% if @video.s3_path %>
 <p>

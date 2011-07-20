@@ -15,5 +15,5 @@
 5. Signup at PayPal for a developer account
     http://developer.paypal.com
 
-5. Configure ActiveMerchant for payments
-    cp config/active_merchant.yml.example config/active_merchant.yml
+5. Setup your Vidli app config and ActiveMerchant for PayPal payments
+    cp config/vidli_config.yml.example config/vidli_config.yml

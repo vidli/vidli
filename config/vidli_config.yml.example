@@ -1,0 +1,21 @@
+base: &base
+  site_name: Vidli, The Official Video Licensor
+  email_support: support@vidli.com
+  s3_expires_in: 600
+  paypal:
+    login: 
+    password: 
+    signature: 
+
+development: &development
+  <<: *base
+
+test: &test
+  <<: *base
+
+production: &production
+  <<: *base
+  paypal:
+    login: 
+    password: 
+    signature:
