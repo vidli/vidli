@@ -1,7 +1,7 @@
+<% content_for :title, "Login or Register" %>
 <h2>Login</h2>
-<style>
+<p>New to the site? <%= link_to 'Register here', register_path %>.</p>
 
-</style>
 <% form_for @user_session, :url => {:action => "create"} do |f| -%>
   <%= render "shared/error_messages", :target => @user_session %>
 
