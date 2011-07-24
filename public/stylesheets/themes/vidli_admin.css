@@ -407,11 +407,11 @@ button.positive, .buttons a.positive{
 }
 
 .video_details .title input {
-  width: 700px;
+  width: 99%;
 }
 
 .video_details .description textarea {
-  width: 700px;
+  width: 99%;
   height: 300px;
 }
 
