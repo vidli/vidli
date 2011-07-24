@@ -10,6 +10,7 @@ class CartController < ApplicationController
     end
     
     if @cart.save!
+      flash[:notice] = "Successfully added video license to cart"
       redirect_to :action => "index"
     else
       flash[:error] = "Error adding video license to cart!"
@@ -21,6 +22,7 @@ class CartController < ApplicationController
     @cart_item = CartItem.find(params[:id])
 
     if @cart_item.destroy
+      flash[:notice] = "Successfully removed video license from cart"
       redirect_to :action => "index"
     else
       flash[:error] = "Error removing video license from cart!"
