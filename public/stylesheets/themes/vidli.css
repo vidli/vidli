@@ -466,3 +466,14 @@ button.positive, .buttons a.positive{
 .video_description p {
   margin: 0 0 16px 0;
 }
+
+/** Videos - Watch or Download **/
+
+.watch_or_download .experience .buttons a {
+  float: right;
+  margin: 0 10px 0 0;
+}
+
+.watch_or_download .image {
+  width: 140px;
+}

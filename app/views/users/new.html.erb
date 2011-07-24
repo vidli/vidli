@@ -1,3 +1,4 @@
+<% content_for :title, "Register" %>
 <h2>Register</h2>
 <p>Already have an account? <%= link_to 'Login here', login_path %>.</p>
 <% form_for @user, :url => {:action => "create"} do |f| -%>
