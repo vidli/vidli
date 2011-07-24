@@ -406,6 +406,19 @@ button.positive, .buttons a.positive{
   margin: 20px 0 20px;
 }
 
+.video_details .title input {
+  width: 700px;
+}
+
+.video_details .description textarea {
+  width: 700px;
+  height: 300px;
+}
+
+.video_details .price input {
+  width: 120px;
+}
+
 .video_upload {
   margin: 20px 0 20px;
 }

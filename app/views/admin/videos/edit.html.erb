@@ -43,9 +43,9 @@
       </button>
     </div>
   	<% else %>
-    	<%= @video.s3_url %>
+    	<%= link_to download_admin_video_url(@video), download_admin_video_path(@video) %>
     	<div class="buttons clearfix">
-      	<%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Clear Upload', delete_s3_asset_admin_video_path(@video), :class => 'negative' %>
+      	<%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Remove Upload', delete_s3_asset_admin_video_path(@video), :class => 'negative' %>
       </div>
   	<% end %>
   </div>

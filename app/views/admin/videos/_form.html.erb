@@ -3,11 +3,11 @@
   <%= form_for([:admin, @video], :html => { :multipart => true }) do |f| %>
     <%= render "shared/error_messages", :target => @video %>
 
-    <div class="field field_text">
+    <div class="field field_text title">
       <%= f.label :title %>
       <%= f.text_field :title %>
     </div>
-    <div class="field field_textarea">
+    <div class="field field_textarea description">
       <%= f.label :description, 'Description (Textile)' %>
       <%= f.text_area :description %>
     </div>
@@ -19,23 +19,23 @@
     </div>
   
     <div class="field field_checkbox">
-      <%= f.check_box :downloadable %>
-      <%= f.label :downloadable, 'Sell via Download' %>
-    </div>
-
-    <div class="field field_text" id="field_price_download" <%= raw f.object.downloadable? ? '' : 'style="display:none"'%>>
-      <%= f.label :price_download, 'Price for Download' %>
-      <%= f.text_field :price_download %>
-    </div>
-
-    <div class="field field_checkbox">
       <%= f.check_box :streamable %>
       <%= f.label :streamable, 'Sell via Streaming' %>
     </div>
 
-    <div class="field field_text" id="field_price_streaming" <%= raw f.object.streamable? ? '' : 'style="display:none"'%>>
+    <div class="field field_text price" id="field_price_streaming" <%= raw f.object.streamable? ? '' : 'style="display:none"'%>>
       <%= f.label :price_streaming, 'Price for Streaming' %>
       <%= f.text_field :price_streaming %>
+    </div>
+
+    <div class="field field_checkbox">
+      <%= f.check_box :downloadable %>
+      <%= f.label :downloadable, 'Sell via Download' %>
+    </div>
+
+    <div class="field field_text price" id="field_price_download" <%= raw f.object.downloadable? ? '' : 'style="display:none"'%>>
+      <%= f.label :price_download, 'Price for Download' %>
+      <%= f.text_field :price_download %>
     </div>
 
     <div class="actions buttons clearfix">

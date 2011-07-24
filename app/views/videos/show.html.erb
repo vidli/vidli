@@ -3,10 +3,10 @@
 <div class="video_details">
   <%= image_tag @video.screenshot.url(:medium), :class => 'video_screenshot' if @video.screenshot.exists? %>
   <div class="video_add_to_cart_buttons buttons">
-    <% if !@download_sold && @video.downloadable? %><%= link_to image_tag('themes/vidli/icons/cart.png') + " Add Download to Cart #{number_to_currency @video.price_download}", add_download_cart_path(@video) %><br /><% end -%>
     <% if !@streaming_sold && @video.streamable? %><%= link_to image_tag('themes/vidli/icons/cart.png') + " Add Streaming to Cart #{number_to_currency @video.price_streaming}", add_streaming_cart_path(@video) %><br /><% end -%>
-    <% if @download_sold %><%= link_to image_tag('themes/vidli/icons/download.png') + ' Download Video', download_order_item_path(@download_sold_order_uuid, @download_sold_order_item_id) %><% end -%>
+    <% if !@download_sold && @video.downloadable? %><%= link_to image_tag('themes/vidli/icons/cart.png') + " Add Download to Cart #{number_to_currency @video.price_download}", add_download_cart_path(@video) %><br /><% end -%>
     <% if @streaming_sold %><%= link_to image_tag('themes/vidli/icons/streaming.png') + ' Watch Your Video', watch_order_item_path(@streaming_sold_order_uuid, @streaming_sold_order_item_id) %><% end -%>
+    <% if @download_sold %><%= link_to image_tag('themes/vidli/icons/download.png') + ' Download Video', download_order_item_path(@download_sold_order_uuid, @download_sold_order_item_id) %><% end -%>
   </div>
 </div>
 <div class="video_description"><%= redcloth @video.description %></div>
