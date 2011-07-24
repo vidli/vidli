@@ -44,7 +44,7 @@ class Admin::VideosController < Admin::AdminController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to([:admin, @video], :notice => 'Video was successfully created.') }
+        format.html { redirect_to(edit_admin_video_path(@video), :notice => 'Video was successfully created.') }
         format.xml  { render :xml => @video, :status => :created, :location => @video }
       else
         format.html { render :action => "new" }
