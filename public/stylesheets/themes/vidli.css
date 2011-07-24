@@ -38,6 +38,10 @@ a:hover {
   text-decoration: none;
 }
 
+img {
+  border: none;
+}
+
 /* Digg Pagination */
 
 .digg_pagination {
@@ -215,12 +219,12 @@ button.positive, .buttons a.positive{
 
 .super .container .cart {
   float: left;
-  padding: 3px 0 0 0;
+  padding: 4px 0 0 0;
 }
 
 .super .container .menu {
   float: right;
-  padding: 3px 0 0 0;
+  padding: 4px 0 0 0;
   margin: 0;
 }
 

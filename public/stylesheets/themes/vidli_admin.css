@@ -47,6 +47,10 @@ fieldset legend {
   font-weight: bold;
 }
 
+img {
+  border: none;
+}
+
 /* Digg Pagination */
 
 .digg_pagination {
