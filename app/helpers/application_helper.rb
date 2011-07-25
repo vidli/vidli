@@ -12,6 +12,6 @@ module ApplicationHelper
   end
   
   def date_full(date)
-    date.strftime("%B %d, %Y at %I:%M%p")
+    date.in_time_zone.strftime("%B %d, %Y at %I:%M%p")
   end
 end
