@@ -226,14 +226,9 @@ button.positive, .buttons a.positive{
   color: #fff;
 }
 
-.super .container .cart {
-  float: left;
-  padding: 3px 0 0 0;
-}
-
 .super .container .menu {
   float: right;
-  padding: 3px 0 0 0;
+  padding: 4px 0 0 0;
   margin: 0;
 }
 
@@ -424,14 +419,17 @@ button.positive, .buttons a.positive{
 }
 
 .video_upload {
-  position: relative;
   margin: 20px 0 20px;
+}
+
+.video_upload .field {
+  position: relative;
 }
 
 .video_upload .filename {
   position: absolute;
-  top: 73px;
-  left: 115px;
+  top: 1px;
+  left: 105px;
   margin: 5px 0;
   color: #32A8F1;
 }
