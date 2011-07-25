@@ -424,7 +424,20 @@ button.positive, .buttons a.positive{
 }
 
 .video_upload {
+  position: relative;
   margin: 20px 0 20px;
+}
+
+.video_upload .filename {
+  position: absolute;
+  top: 73px;
+  left: 115px;
+  margin: 5px 0;
+  color: #32A8F1;
+}
+
+.video_upload .buttons {
+  margin: 10px 0 0 0;
 }
 
 /* Progress Bar */
