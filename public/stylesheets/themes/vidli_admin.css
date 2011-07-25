@@ -441,27 +441,27 @@ button.positive, .buttons a.positive{
 /* Progress Bar */
 
 .video_upload_meter_wrap {
-    position: relative;
+  margin: 10px 0 0 0;
+  position: relative;
 }
 
 .video_upload_meter_wrap, .video_upload_meter_value, .video_upload_meter_text {
-    /* The width and height of your image */
-    width: 155px; height: 30px;
+  /* The width and height of your image */
+  width: 155px; height: 30px;
 }
 
 .video_upload_meter_wrap, .video_upload_meter_value {
-    background: #bdbdbd url(/images/themes/vidli/videos/meter-outline.png) top left no-repeat;
+  background: #bdbdbd url(/images/themes/vidli/videos/meter-outline.png) top left no-repeat;
 }
             
 .video_upload_meter_text {
-    position: absolute;
-    top:0; left:0;
-
-    padding-top: 5px;
-                
-    color: #fff;
-    text-align: center;
-    width: 100%;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  padding-top: 5px;        
+  color: #fff;
+  text-align: center;
+  width: 100%;
 }
 
 /* Users - Show */
