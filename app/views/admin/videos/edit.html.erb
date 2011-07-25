@@ -4,11 +4,12 @@
 
 <fieldset class="video_upload">
   <legend>Video Upload</legend>
+<% if !@video.s3_path %>
+  <p>Please make sure you upload either H.264 (.mp4, .mov, .f4v) or FLV (.flv) compatible video formats only</p>
   <div class="field">
-    <% if !@video.s3_path %>
     <%= raw s3_swf_upload_tag(
       :signaturePath => '/admin/s3_uploads.xml',
-      :fileTypes => '*.mp4;*.mov;*.f4v',
+      :fileTypes => '*.mp4;*.mov;*.f4v;*.flv',
       :onQueueChange => "queueChangeHandler(queue);",
       :onQueueSizeLimitReached => "alert('Please clear the selected file first');",
       :onSignatureIOError => "alert('There was an error');",
@@ -42,13 +43,13 @@
         Clear
       </button>
     </div>
-  	<% else %>
-    	<%= link_to download_admin_video_url(@video), download_admin_video_path(@video) %>
-    	<div class="buttons clearfix">
-      	<%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Remove Upload', delete_s3_asset_admin_video_path(@video), :class => 'negative' %>
-      </div>
-  	<% end %>
   </div>
+<% else %>
+	<%= link_to download_admin_video_url(@video), download_admin_video_path(@video) %>
+	<div class="buttons clearfix">
+  	<%= link_to image_tag('themes/vidli/icons/cancel.png') + ' Remove Upload', delete_s3_asset_admin_video_path(@video), :class => 'negative' %>
+  </div>
+<% end %>
 </fieldset>
 
 <div class="buttons">
