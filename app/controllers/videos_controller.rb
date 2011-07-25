@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  before_filter :require_user, :only => [:watch, :download]
+  
   def show
     @video = Video.find(params[:id])
     

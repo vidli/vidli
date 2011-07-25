@@ -1,8 +1,5 @@
 <% content_for :title, "Your Shopping Cart" %>
 <h2>Your Shopping Cart</h2>
-<% if @cart.empty? -%>
-<h3>No items found</h3>
-<% else -%>
 <table class="cart_contents common43h">
   <thead>
     <tr class="titles">
@@ -23,8 +20,16 @@
       <td class="total"><%= number_to_currency cart_item_price(i, i.delivery) %></td>
     </tr>
     <% end -%>
+    <% if @cart.empty? -%>
+    <tr class="row">
+      <td colspan="5">
+        No video licenses found
+      </td>
+    </tr>
+    <% end -%>
   </tbody>
 </table>
 <p class="cart_total">Total: <%= number_to_currency @cart.total_price %></p>
+<% if !@cart.empty? -%>
 <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path %>
 <% end -%>
