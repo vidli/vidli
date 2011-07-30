@@ -38,7 +38,7 @@ Visit [http://demo.vidli.com](http://demo.vidli.com) to try out the Vidli app fo
 ## Vidli comes with
 
 - Simple, easy to use video content management system 
-- Non-commercial use [JW Player](http://www.longtailvideo.com/players) video player
+- Non-commercial use [JW Player](http://www.longtailvideo.com/players) video player. When you go live, a commercial license will need to be purchased.
 - Seamless integration with PayPal Express
 - Integration with Amazon S3 for video storage and playback
 
