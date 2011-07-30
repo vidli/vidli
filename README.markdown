@@ -38,6 +38,6 @@ Out of the box, Vidli integrates with PayPal Express checkout for payment proces
 - Seamless integration with PayPal Express
 - Integration with Amazon S3 for video storage and playback
 
-== License
+## License
 
 Vidli is released under the [MIT license](http://www.opensource.org/licenses/mit-license).
