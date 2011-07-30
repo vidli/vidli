@@ -7,9 +7,11 @@ Out of the box, Vidli integrates with PayPal Express checkout for payment proces
 ## Getting Started
 
 1. Copy the database.yml.example file to database.yml. Update with your login and password to your MySQL database.
+
     cp config/database.yml.example config/database.yml
 
 2. Configure your AWS settings
+
     cp config/amazon_s3.yml.example config/amazon_s3.yml
 
 3. Create the development and production buckets on AWS via http://console.aws.amazon.com that matches your config file.
@@ -17,9 +19,11 @@ Out of the box, Vidli integrates with PayPal Express checkout for payment proces
 4. Upload the lib/crossdomain.xml file to each bucket. Make sure permissions have Everyone -> Open/Download.
 
 5. Signup at PayPal for a developer account
+
     http://developer.paypal.com
 
 5. Setup your Vidli app config and ActiveMerchant for PayPal payments
+
     cp config/vidli_config.yml.example config/vidli_config.yml
 
 ## Who is Vidli for?
