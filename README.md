@@ -1,6 +1,6 @@
 ## Welcome to Vidli
 
-Vidli is the first of its kind Open Source Video eCommerce platform. Specifically designed for video content owners that are looking to setup a distribution storefront. Vidli is built on the Ruby on Rails framework.
+[Vidli](http://vidli.com) is the first of its kind Open Source Video eCommerce platform. Specifically designed for video content owners that are looking to setup a distribution storefront. Vidli is built on the Ruby on Rails framework.
 
 Out of the box, Vidli integrates with PayPal Express checkout for payment processing and Amazon S3 for video streaming and storage.
 
@@ -14,7 +14,7 @@ Out of the box, Vidli integrates with PayPal Express checkout for payment proces
 
     cp config/amazon_s3.yml.example config/amazon_s3.yml
 
-3. Create the development and production buckets on AWS via http://console.aws.amazon.com that matches your config file.
+3. Create the development and production buckets on AWS via [http://console.aws.amazon.com](http://console.aws.amazon.com) that matches your config file.
 
 4. Upload the lib/crossdomain.xml file to each bucket. Make sure permissions have Everyone -> Open/Download.
 
@@ -25,6 +25,10 @@ Out of the box, Vidli integrates with PayPal Express checkout for payment proces
 5. Setup your Vidli app config and ActiveMerchant for PayPal payments
 
     cp config/vidli_config.yml.example config/vidli_config.yml
+
+## Try it out
+
+Visit [http://demo.vidli.com](http://demo.vidli.com) to try out the Vidli app for yourself.
 
 ## Who is Vidli for?
 
